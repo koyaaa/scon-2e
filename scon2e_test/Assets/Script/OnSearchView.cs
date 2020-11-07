@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
+using System.Collections;
+
 
 public class OnSearchView : MonoBehaviour
 {
@@ -14,7 +16,14 @@ public class OnSearchView : MonoBehaviour
     private SphereCollider m_sphereCollider = null;
     private List<FoundData> m_foundList = new List<FoundData>();
 
-    
+    public Color redColor;
+    public Color yellowColor;
+
+    public float itime = 1.0f;
+
+    private float SaveTime;
+
+    private bool WANING=false;
 
 
     public float SearchAngle
@@ -57,10 +66,13 @@ public class OnSearchView : MonoBehaviour
         float searchRad = m_searchAngle * 0.5f * Mathf.Deg2Rad;
         m_searchCosTheta = Mathf.Cos(searchRad);
     }
-    
-    private void Update()
+
+     void Update()
     {
         UpdateFoundObject();
+
+      
+
     }
 
     private void UpdateFoundObject()
@@ -74,32 +86,59 @@ public class OnSearchView : MonoBehaviour
             GameObject targetObject = foundData.Obj;
             if (targetObject == null)
             {
+                
                 continue;
             }
-
+            
             bool isFound = CheckFoundObject(targetObject);
             foundData.Update(isFound);
-
+           
             if (foundData.IsFound())
             {
-                onFound(targetObject);
-                Debug.Log("主人公発見: ");
+               
+                    onFound(targetObject);
+                    Debug.Log("誰: ？");
+                    Debug.Log(" " + SaveTime);
+                    d1.inArea = true;
+                    GetComponent<Renderer>().material.color = yellowColor;
+                    GetComponent<NavMeshAgent>().isStopped = true;
 
-                d1.inArea = true;
-                GetComponent<Renderer>().material.color = new Color(255f / 255f, 65f / 255f, 26f / 255f, 255f / 255f);
-                GetComponent<NavMeshAgent>().isStopped = true;
-            }
+                
+                    SaveTime = Time.time;
+                    Debug.Log("更新　" + SaveTime);
+                   
+                
+             }
+               
             else if (foundData.IsLost())
             {
+
+                WANING = false;
                 onLost(targetObject);
                 Debug.Log("主人公いなくなった: ");
-
+                Debug.Log(" "+SaveTime);
                 GetComponent<NavMeshAgent>().isStopped = false;
                 d1.inArea = false;
                 GetComponent<Renderer>().material.color = d1.origColor;
                 d1.chaspeed = 0;
             }
+
+            if (d1.inArea == true)
+            {
+                
+                if (WANING == false&& Time.time > SaveTime + itime)
+                {
+                    WANING = true;
+                    Debug.Log("主人公発見: !");
+                    Debug.Log(" " + SaveTime);
+                    onFound(targetObject);
+                    d1.inArea = true;
+                    GetComponent<Renderer>().material.color = redColor;
+                    GetComponent<NavMeshAgent>().isStopped = true;
+                }
+            }
         }
+      
     }
 
     private bool CheckFoundObject(GameObject i_target)
@@ -164,9 +203,9 @@ public class OnSearchView : MonoBehaviour
     private void OnTriggerEnter(Collider i_other)
     {
         GameObject enterObject = i_other.gameObject;
-
-        // 念のため多重登録されないようにする。
-        if (m_foundList.Find(value => value.Obj == enterObject) == null)
+        
+            // 念のため多重登録されないようにする。
+            if (m_foundList.Find(value => value.Obj == enterObject) == null)
         {
             m_foundList.Add(new FoundData(enterObject));
         }
