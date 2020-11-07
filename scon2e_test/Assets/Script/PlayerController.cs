@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
     public CinemachineVirtualCamera vCamera;
 
     public bool ReverseKey;
-
+    //true:ごみ箱に隠れてるfalse:隠れてない
+    public bool hide;
     //Camera camera;
 
 
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         goalOn = false;
         failText.enabled = false;
         failButton.SetActive(false);
+        hide = false;
        // ReverseKey = false;
 
        // Debug.Log("button0");
@@ -152,11 +154,26 @@ public class PlayerController : MonoBehaviour
         {
             rB.AddForce(0, jumpForce, 0, ForceMode.Impulse);
             jumpTime = 60f;
-            //Debug.Log("button0");
+        }
+
+    }
+
+    //プレイヤー前方のボックスコライダー
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Gomibako")
+        {
+            //ごみ箱に隠れる(BボタンかFキー)
+            if (hide == false && Input.GetButtonDown("Bbutton"))
+            {
+                hide = true;
+                //gameObject.SetActive(false);
+                Debug.Log("隠れた");
+            }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Goal")
         {
@@ -205,5 +222,5 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
         this.gameObject.GetComponent<PlayerController>().enabled = true;
-    }
+    }*/
 }
