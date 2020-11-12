@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic;
-using System.Collections;
 
 
 public class WalkAround : MonoBehaviour
 {
+    public OnSearchView onSearch;   //OnSearchViewスクリプトを使用する
+
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
@@ -51,7 +51,11 @@ public class WalkAround : MonoBehaviour
             GetComponent<Renderer>().material.color = origColor;
         }
         
-
+        if(onSearch.WANING == true)
+        {
+            Debug.Log("はいった");
+            agent.destination = target.transform.position;//ターゲットに向かう
+        }
         
     }
 
@@ -60,10 +64,7 @@ public class WalkAround : MonoBehaviour
         if (points.Length == 0)
             return;
 
-        if(Chase == true)
-        {
-            return;
-        }
+        
 
         agent.destination = points[destPoint].position;
         destPoint = (destPoint + 1) % points.Length;

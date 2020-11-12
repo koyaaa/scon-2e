@@ -134,7 +134,7 @@ public class OnSearchView : MonoBehaviour
                     onFound(targetObject);
                     d1.inArea = true;
                     GetComponent<Renderer>().material.color = redColor;
-                    GetComponent<NavMeshAgent>().isStopped = true;
+                    GetComponent<NavMeshAgent>().isStopped = false;
                 }
             }
         }
