@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-
+using System.Collections.Generic;
+using System.Collections;
 
 public class WalkAround : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class WalkAround : MonoBehaviour
 
         if (agent.remainingDistance < 0.5f && Time.time > SaveTime + Timemin)
         {
-            Debug.Log("次へ");
+            //Debug.Log("次へ");
             GetComponent<NavMeshAgent>().isStopped = false;
             GotoNextPoint();
             SaveTime = 0;
@@ -53,7 +54,7 @@ public class WalkAround : MonoBehaviour
         
         if(onSearch.WANING == true)
         {
-            Debug.Log("はいった");
+            //Debug.Log("はいった");
             agent.destination = target.transform.position;//ターゲットに向かう
         }
         
