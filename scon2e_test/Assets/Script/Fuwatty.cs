@@ -58,7 +58,7 @@ public class Fuwatty : MonoBehaviour
                 //if (agent.remainingDistance < 0.5f)
                 if(acceltime < Time.time - kari)
                 {
-                    Debug.Log("あああ");
+                    //Debug.Log("あああ");
                     agent.speed = savespd;
                     accelerationflg = false;
                     //walk.target = player;
