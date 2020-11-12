@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
+using System.Collections;
+
 
 public class WalkAround : MonoBehaviour
 {
@@ -13,7 +13,14 @@ public class WalkAround : MonoBehaviour
     public bool inArea = false;
     public float chaspeed = 0.05f;
     public Color origColor;
-  
+
+    public int Timemin = 0;//きょろきょろさせる
+    private float SaveTime = 0;
+
+    
+    
+
+
 
     void Start()
     {
@@ -25,20 +32,25 @@ public class WalkAround : MonoBehaviour
    
     void Update()
     {
-        if (agent.remainingDistance < 0.5f)
+        if (agent.remainingDistance < 0.5f && SaveTime == 0)
         {
-            
+            SaveTime = Time.time;
+            GetComponent<NavMeshAgent>().isStopped = true;
+        }
+
+        if (agent.remainingDistance < 0.5f && Time.time > SaveTime + Timemin)
+        {
+            Debug.Log("次へ");
+            GetComponent<NavMeshAgent>().isStopped = false;
             GotoNextPoint();
+            SaveTime = 0;
         }
 
         if (target.activeInHierarchy == false)
         {
             GetComponent<Renderer>().material.color = origColor;
         }
-        if (inArea == true)
-        {
-            
-        }
+        
 
         
     }
@@ -47,6 +59,11 @@ public class WalkAround : MonoBehaviour
     {
         if (points.Length == 0)
             return;
+
+        if(Chase == true)
+        {
+            return;
+        }
 
         agent.destination = points[destPoint].position;
         destPoint = (destPoint + 1) % points.Length;
