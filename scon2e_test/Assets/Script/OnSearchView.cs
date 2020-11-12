@@ -23,7 +23,7 @@ public class OnSearchView : MonoBehaviour
 
     private float SaveTime;
 
-    private bool WANING=false;
+    public bool WANING=false;
 
 
     public float SearchAngle
@@ -93,7 +93,7 @@ public class OnSearchView : MonoBehaviour
             bool isFound = CheckFoundObject(targetObject);
             foundData.Update(isFound);
            
-            if (foundData.IsFound())
+            if (foundData.IsFound() && WANING == false)
             {
                
                     onFound(targetObject);
@@ -106,14 +106,14 @@ public class OnSearchView : MonoBehaviour
                 
                     SaveTime = Time.time;
                     Debug.Log("更新　" + SaveTime);
-                   
-                
-             }
+                    //WANING = false;
+
+            }
                
-            else if (foundData.IsLost())
+            else if (foundData.IsLost() && WANING == false)
             {
 
-                WANING = false;
+                //WANING == false
                 onLost(targetObject);
                 Debug.Log("主人公いなくなった: ");
                 Debug.Log(" "+SaveTime);
@@ -125,7 +125,7 @@ public class OnSearchView : MonoBehaviour
 
             if (d1.inArea == true)
             {
-                
+
                 if (WANING == false&& Time.time > SaveTime + itime)
                 {
                     WANING = true;
@@ -221,7 +221,7 @@ public class OnSearchView : MonoBehaviour
             return;
         }
 
-        if (foundData.IsCurrentFound())
+        if (foundData.IsCurrentFound() && WANING == false)
         {
             WalkAround d1 = GetComponent<WalkAround>();
 
