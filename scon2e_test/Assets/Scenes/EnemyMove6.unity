@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566215fc1b825204e9231d03f9d392df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 1.5
   brake: 0.5
   goalOn: 0
   explosion: {fileID: 0}
@@ -1037,7 +1037,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800160388}
-  m_LocalRotation: {x: 0.11485545, y: -0.000000017618557, z: 0.0000000020370685, w: 0.9933822}
+  m_LocalRotation: {x: 0.11485545, y: 0.00000001761856, z: -0.000000002037069, w: 0.9933822}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1803,6 +1803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5fbe9da5e854e4a8876cea1d118b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSearch: {fileID: 1631036807}
   points:
   - {fileID: 1975149692}
   - {fileID: 1072968361}
@@ -1812,6 +1813,7 @@ MonoBehaviour:
   inArea: 0
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
+  Timemin: 0
 --- !u!54 &1631036805
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1881,12 +1883,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSearch: {fileID: 1631036807}
   pos: {fileID: 1648989578}
+  cube1: {fileID: 1914509161}
+  cube2: {fileID: 1722946272}
+  cube4: {fileID: 1290692870}
   target: {fileID: 395442461}
   cooltime: 4
   chargetime: 2
   speed: 4
   yellowColor: {r: 1, g: 0.9728835, b: 0, a: 0}
-  acceltime: 1.5
+  acceltime: 1
 --- !u!1 &1648989578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,6 +2439,7 @@ GameObject:
   - component: {fileID: 1914509164}
   - component: {fileID: 1914509163}
   - component: {fileID: 1914509162}
+  - component: {fileID: 1914509166}
   m_Layer: 0
   m_Name: Cube 1
   m_TagString: Untagged
@@ -2515,6 +2521,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1914509166
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914509161}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1975149691
 GameObject:
   m_ObjectHideFlags: 0

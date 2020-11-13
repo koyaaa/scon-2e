@@ -10,7 +10,12 @@ public class Fuwatty : MonoBehaviour
     public OnSearchView onSearch;   //OnSearchViewスクリプトを使用する
     //public WalkAround walk;   //WalkAroundスクリプトを使用する
     public GameObject pos;
-    //public GameObject player;
+
+    //まとめて壁のnavemeshobstaclのヒエラルキーを変更する方法が分からないので１個ずつ(仮)
+
+    public GameObject cube1;
+    public GameObject cube2;
+    public GameObject cube4;
 
     public GameObject target;
     public float cooltime =2.0f;
@@ -22,12 +27,16 @@ public class Fuwatty : MonoBehaviour
     private bool saveflg = false;
     private bool blinkingflg = false;
     private bool accelerationflg = false;
-    private bool posflg = false;
+    //private bool posflg = false;
     private float savespd = 0f;
     private int cnt;
     public float acceltime;
     private float kari;
     NavMeshAgent agent;
+
+    NavMeshObstacle block;
+    NavMeshObstacle block2;
+    NavMeshObstacle block3;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +44,9 @@ public class Fuwatty : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         pos = GameObject.Find("pos");
         //player = GameObject.Find("Player");
+        block = cube1.GetComponent<NavMeshObstacle>();
+        block2 = cube2.GetComponent<NavMeshObstacle>();
+        block3 = cube4.GetComponent<NavMeshObstacle>();
     }
 
     // Update is called once per frame
@@ -63,6 +75,9 @@ public class Fuwatty : MonoBehaviour
                     accelerationflg = false;
                     //walk.target = player;
                     saveflg = false;
+                    block.carving = true;
+                    block2.carving = true;
+                    block3.carving = true;
                 }
             }
             else
@@ -81,11 +96,11 @@ public class Fuwatty : MonoBehaviour
                 //posflg = true;
                 //saveflg = false;
             }
-            if (blinkingflg == true)
+            if (blinkingflg == true)//点滅
             {
                 GetComponent<NavMeshAgent>().isStopped = true;
                 blinking();
-                if (chargetime < Time.time - (savetime + cooltime))
+                if (chargetime < Time.time - (savetime + cooltime))//点滅した後高速移動
                 {
                     GetComponent<Renderer>().material.color = onSearch.redColor;
                     blinkingflg = false;
@@ -94,6 +109,9 @@ public class Fuwatty : MonoBehaviour
                     cnt = 0;
                     savespd = agent.speed;
                     kari = Time.time;
+                    block.carving = false;
+                    block2.carving = false;
+                    block3.carving = false;
                 }
             }
         }
