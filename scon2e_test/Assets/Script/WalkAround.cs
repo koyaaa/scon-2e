@@ -54,18 +54,18 @@ public class WalkAround : MonoBehaviour
         
         if(onSearch.WANING == true)
         {
-            //Debug.Log("はいった");
+            Debug.Log("はいった");
             agent.destination = target.transform.position;//ターゲットに向かう
+            GetComponent<NavMeshAgent>().isStopped = false;
+
         }
-        
+
     }
 
     void GotoNextPoint()
     {
         if (points.Length == 0)
             return;
-
-        
 
         agent.destination = points[destPoint].position;
         destPoint = (destPoint + 1) % points.Length;

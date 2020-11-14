@@ -26,8 +26,18 @@ public class OnSearchView : MonoBehaviour
     private float SaveTime;
 
     public bool WANING=false;
-  
 
+    public int EnemyNumber = 0;//敵キャラの番号
+    public GameObject Obj;
+    public ObjectManager objectManager;
+    public bool HideSearch = false;//主人公が隠れたときにtrueになる。
+    public bool HunterFlg = false;
+
+    void Start()
+    {
+        Obj = GameObject.Find("ObjectManager");
+        objectManager = Obj.GetComponent<ObjectManager>();
+    }
 
     public float SearchAngle
     {
@@ -83,7 +93,7 @@ public class OnSearchView : MonoBehaviour
             //Debug.Log("主人公発見: ");
 
             WalkAround d1 = GetComponent<WalkAround>();
-            Hunter hunt = GetComponent<Hunter>();
+            
 
             GameObject targetObject = foundData.Obj;
             if (targetObject == null)
@@ -136,25 +146,56 @@ public class OnSearchView : MonoBehaviour
                     d1.inArea = true;
                     GetComponent<Renderer>().material.color = redColor;
                     GetComponent<NavMeshAgent>().isStopped = false;
+
+                    for (int i = 0; i < 20; i++)
+                    {
+                        if (objectManager.EnemyNumber[i] != -99)
+                        {
+                            continue;
+                        }
+                        objectManager.EnemyNumber[i] = EnemyNumber;
+                        objectManager.EnemyNumber[i + 1] = -99;
+                        break;
+                    }
                 }
 
-                if (WANING == true&&hunt.IsLostFlg == true)
+                if(HunterFlg == true)
                 {
-                    WANING = false;
-                    onLost(targetObject);
-                    Debug.Log("主人公いなくなった: ");
-                    //Debug.Log(" " + SaveTime);
-                    GetComponent<NavMeshAgent>().isStopped = false;
-                    d1.inArea = false;
-                    GetComponent<Renderer>().material.color = d1.origColor;
-                    d1.chaspeed = 0;
-                    hunt.LostFlg = false;
-                    hunt.IsLostFlg = false;
+                    
+                }
 
+                if (WANING == true && HunterFlg == true )
+                {
+                    Hunter hunt = GetComponent<Hunter>();
+                    if (hunt.IsLostFlg == true)
+                    {
+
+
+
+                        WANING = false;
+                        onLost(targetObject);
+                        Debug.Log("主人公いなくなった: ");
+                        //Debug.Log(" " + SaveTime);
+                        GetComponent<NavMeshAgent>().isStopped = false;
+                        d1.inArea = false;
+                        GetComponent<Renderer>().material.color = d1.origColor;
+                        d1.chaspeed = 0;
+
+                        hunt.LostFlg = false;
+                        hunt.IsLostFlg = false;
+                    }
                 }
             }
 
-           
+            //主人公が隠れたとき
+            if (HideSearch == true)
+            {
+                if (foundData.IsFound() == false)
+                {
+                    Debug.Log("隠れた！");
+                }
+            }
+
         }
       
     }
@@ -299,6 +340,9 @@ public class OnSearchView : MonoBehaviour
             return m_isCurrentFound;
         }
     }
+
+    
+
 
 } // class SearchingBehavior
 
