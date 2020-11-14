@@ -6,8 +6,6 @@ using System.Collections;
 
 public class OnSearchView : MonoBehaviour
 {
-   
-
     public event System.Action<GameObject> onFound = (obj) => { };
     public event System.Action<GameObject> onLost = (obj) => { };
 
@@ -16,18 +14,27 @@ public class OnSearchView : MonoBehaviour
     private float m_searchCosTheta = 0.0f;
 
     private SphereCollider m_sphereCollider = null;
-    private List<FoundData> m_foundList = new List<FoundData>();
+    public List<FoundData> m_foundList = new List<FoundData>();
 
     public Color redColor;
     public Color yellowColor;
-    
+
     public float itime = 1.0f;
 
     private float SaveTime;
 
-    public bool WANING=false;
-  
+    public bool WANING = false;
 
+    public int EnemyNumber = 0;//敵キャラの番号
+    public GameObject Obj;
+    public ObjectManager objectManager;
+    public bool HideSearch;//主人公が隠れたときにtrueになる。
+
+    void Start()
+    {
+        Obj = GameObject.Find("ObjectManager");
+        objectManager = Obj.GetComponent<ObjectManager>();
+    }
 
     public float SearchAngle
     {
@@ -70,9 +77,11 @@ public class OnSearchView : MonoBehaviour
         m_searchCosTheta = Mathf.Cos(searchRad);
     }
 
-    private void Update()
+     void Update()
     {
         UpdateFoundObject();
+
+      
 
     }
 
@@ -83,7 +92,6 @@ public class OnSearchView : MonoBehaviour
             //Debug.Log("主人公発見: ");
 
             WalkAround d1 = GetComponent<WalkAround>();
-            Hunter hunt = GetComponent<Hunter>();
 
             GameObject targetObject = foundData.Obj;
             if (targetObject == null)
@@ -100,30 +108,31 @@ public class OnSearchView : MonoBehaviour
                
                     onFound(targetObject);
                     Debug.Log("誰: ？");
-                    //Debug.Log(" " + SaveTime);
+                    Debug.Log(" " + SaveTime);
                     d1.inArea = true;
                     GetComponent<Renderer>().material.color = yellowColor;
                     GetComponent<NavMeshAgent>().isStopped = true;
 
+                
                     SaveTime = Time.time;
-                    //Debug.Log("更新　" + SaveTime);
+                    Debug.Log("更新　" + SaveTime);
                     //WANING = false;
 
             }
-
+               
             else if (foundData.IsLost() && WANING == false)
             {
 
                 //WANING == false
                 onLost(targetObject);
                 Debug.Log("主人公いなくなった: ");
-                //Debug.Log(" " + SaveTime);
+                Debug.Log(" "+SaveTime);
                 GetComponent<NavMeshAgent>().isStopped = false;
                 d1.inArea = false;
                 GetComponent<Renderer>().material.color = d1.origColor;
                 d1.chaspeed = 0;
             }
-            
+
             if (d1.inArea == true)
             {
 
@@ -131,30 +140,24 @@ public class OnSearchView : MonoBehaviour
                 {
                     WANING = true;
                     Debug.Log("主人公発見: !");
-                    //Debug.Log(" " + SaveTime);
+                    Debug.Log(" " + SaveTime);
                     onFound(targetObject);
                     d1.inArea = true;
                     GetComponent<Renderer>().material.color = redColor;
                     GetComponent<NavMeshAgent>().isStopped = false;
-                }
-
-                if (WANING == true&&hunt.IsLostFlg == true)
-                {
-                    WANING = false;
-                    onLost(targetObject);
-                    Debug.Log("主人公いなくなった: ");
-                    //Debug.Log(" " + SaveTime);
-                    GetComponent<NavMeshAgent>().isStopped = false;
-                    d1.inArea = false;
-                    GetComponent<Renderer>().material.color = d1.origColor;
-                    d1.chaspeed = 0;
-                    hunt.LostFlg = false;
-                    hunt.IsLostFlg = false;
+                    for(int i = 0; i < 20; i++)
+                    {
+                        if (objectManager.EnemyNumber[i] != -99)
+                        {
+                            continue;
+                        }
+                        objectManager.EnemyNumber[i] = EnemyNumber;
+                        objectManager.EnemyNumber[i + 1] = -99;
+                        break;
+                    }
 
                 }
             }
-
-           
         }
       
     }
@@ -232,7 +235,7 @@ public class OnSearchView : MonoBehaviour
     private void OnTriggerExit(Collider i_other)
     {
         GameObject exitObject = i_other.gameObject;
-   
+
         var foundData = m_foundList.Find(value => value.Obj == exitObject);
         if (foundData == null)
         {
@@ -245,7 +248,7 @@ public class OnSearchView : MonoBehaviour
 
             onLost(foundData.Obj);
 
-            //Debug.Log("主人公いなくなった: ");
+            Debug.Log("主人公いなくなった: ");
 
             GetComponent<NavMeshAgent>().isStopped = false;
             d1.inArea = false;
@@ -257,7 +260,7 @@ public class OnSearchView : MonoBehaviour
     }
 
 
-    private class FoundData
+    public class FoundData
     {
         public FoundData(GameObject i_object)
         {
