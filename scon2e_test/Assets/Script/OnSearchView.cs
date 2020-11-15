@@ -6,7 +6,6 @@ using System.Collections;
 
 public class OnSearchView : MonoBehaviour
 {
-    public hypnogenesis hypno;
 
     public event System.Action<GameObject> onFound = (obj) => { };
     public event System.Action<GameObject> onLost = (obj) => { };
@@ -32,6 +31,7 @@ public class OnSearchView : MonoBehaviour
     public ObjectManager objectManager;
     public bool HideSearch = false;//主人公が隠れたときにtrueになる。
     public bool HunterFlg = false;
+    public bool hypnflg = false;
 
     void Start()
     {
@@ -82,7 +82,7 @@ public class OnSearchView : MonoBehaviour
 
     private void Update()
     {
-        if (hypno.stop_flg == false)
+        if (hypnflg == false)
         {
             UpdateFoundObject();
         }

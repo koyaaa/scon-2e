@@ -12,7 +12,6 @@ public class hypnogenesis : MonoBehaviour
     public Color blueColor;
     public Color defaultColor;
     private float save_time;
-    public bool stop_flg;
     private GameObject enemy;
 
     // Start is called before the first frame update
@@ -43,18 +42,18 @@ public class hypnogenesis : MonoBehaviour
                     enemy.GetComponent<WalkAround>().enabled = false;
                     enemy.GetComponent<Renderer>().material.color = blueColor;
                     save_time = Time.time;
-                    stop_flg = true;
+                    onSearch.hypnflg = true;
                 }
             }
             //Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
         }
         //敵が機能停止してから時間が経ったら機能再開
-        if(stop_time < Time.time - save_time && stop_flg == true)
+        if(stop_time < Time.time - save_time && onSearch.hypnflg == true)
         {
             enemy.GetComponent<NavMeshAgent>().enabled = true;
             enemy.GetComponent<WalkAround>().enabled = true;
             enemy.GetComponent<Renderer>().material.color = defaultColor;
-            stop_flg = false;
+            onSearch.hypnflg = false;
         }
     }
 }
