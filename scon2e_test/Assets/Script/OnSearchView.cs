@@ -6,7 +6,7 @@ using System.Collections;
 
 public class OnSearchView : MonoBehaviour
 {
-   
+    public hypnogenesis hypno;
 
     public event System.Action<GameObject> onFound = (obj) => { };
     public event System.Action<GameObject> onLost = (obj) => { };
@@ -82,7 +82,10 @@ public class OnSearchView : MonoBehaviour
 
     private void Update()
     {
-        UpdateFoundObject();
+        if (hypno.stop_flg == false)
+        {
+            UpdateFoundObject();
+        }
 
     }
 

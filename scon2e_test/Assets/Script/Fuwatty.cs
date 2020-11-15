@@ -8,14 +8,6 @@ using UnityEngine.AI;
 public class Fuwatty : MonoBehaviour
 {
     public OnSearchView onSearch;   //OnSearchViewスクリプトを使用する
-    //public WalkAround walk;   //WalkAroundスクリプトを使用する
-    public GameObject pos;
-
-    //まとめて壁のnavemeshobstaclのヒエラルキーを変更する方法が分からないので１個ずつ(仮)
-
-    public GameObject cube1;
-    public GameObject cube2;
-    public GameObject cube4;
 
     public GameObject target;
     public float cooltime =2.0f;
@@ -27,80 +19,59 @@ public class Fuwatty : MonoBehaviour
     private bool saveflg = false;
     private bool blinkingflg = false;
     private bool accelerationflg = false;
-    //private bool posflg = false;
     private float savespd = 0f;
     private int cnt;
     public float acceltime;
-    private float kari;
+    private float start_acceltime;
     NavMeshAgent agent;
-
-    NavMeshObstacle block;
-    NavMeshObstacle block2;
-    NavMeshObstacle block3;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        pos = GameObject.Find("pos");
-        //player = GameObject.Find("Player");
-        block = cube1.GetComponent<NavMeshObstacle>();
-        block2 = cube2.GetComponent<NavMeshObstacle>();
-        block3 = cube4.GetComponent<NavMeshObstacle>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(GetComponent<NavMeshAgent>().isStopped);
-        if (onSearch.WANING == true)//敵が！マーク状態だったら
+        //敵が！マーク状態だったら
+        if (onSearch.WANING == true)
         {
-            /*if (posflg == true)
-            {
-                Vector3 tpos = target.transform.position - pos;
-                Vector3 pos = target.transform.position;
-            }*/
-            GetComponent<NavMeshAgent>().isStopped = false;//navmesh有効化
+            GetComponent<NavMeshAgent>().isStopped = false;
+            //前方に向かって動く
             if (accelerationflg == true)
             {
+                GetComponent<NavMeshAgent>().isStopped = true;
                 agent.speed = speed;
-
-                agent.destination = pos.transform.position;
-                //walk.target = pos;
-                //if (agent.remainingDistance < 0.5f)
-                if(acceltime < Time.time - kari)
+                Transform EnemyTrans = this.transform;
+                EnemyTrans.Translate(Vector3.forward * speed);
+                //前方に走り始めてからacceltime秒掛かったら止まる
+                if(acceltime < Time.time - start_acceltime)
                 {
-                    //Debug.Log("あああ");
+                    GetComponent<NavMeshAgent>().isStopped = false;
                     agent.speed = savespd;
                     accelerationflg = false;
-                    //walk.target = player;
                     saveflg = false;
-                    block.carving = true;
-                    block2.carving = true;
-                    block3.carving = true;
                 }
             }
-            else
-            {
-              agent.destination = target.transform.position;//ターゲットに向かう
-            }
-            if (saveflg == false)//一回だけ現在時間を保存
+            //一回だけ現在時間を保存、accelflgを抜けたらまた入る
+            if (saveflg == false)
             {
                 savetime = Time.time;
                 saveflg = true;
             }
+            //クールタイム経過したら
             if (cooltime < Time.time - savetime && blinkingflg == false && accelerationflg == false)//クールタイム経ったら点滅
             {
                 blinkingflg = true;
-                pos.transform.position = target.transform.position;
-                //posflg = true;
-                //saveflg = false;
             }
-            if (blinkingflg == true)//点滅
+            //点滅
+            if (blinkingflg == true)
             {
                 GetComponent<NavMeshAgent>().isStopped = true;
                 blinking();
-                if (chargetime < Time.time - (savetime + cooltime))//点滅した後高速移動
+                //点滅した後高速移動
+                if (chargetime < Time.time - (savetime + cooltime))
                 {
                     GetComponent<Renderer>().material.color = onSearch.redColor;
                     blinkingflg = false;
@@ -108,10 +79,7 @@ public class Fuwatty : MonoBehaviour
                     GetComponent<NavMeshAgent>().isStopped = false;
                     cnt = 0;
                     savespd = agent.speed;
-                    kari = Time.time;
-                    block.carving = false;
-                    block2.carving = false;
-                    block3.carving = false;
+                    start_acceltime = Time.time;
                 }
             }
         }
