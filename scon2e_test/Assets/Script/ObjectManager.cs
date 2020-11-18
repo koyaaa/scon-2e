@@ -25,7 +25,7 @@ public class ObjectManager : MonoBehaviour
             SendHide();//追っかけているエネミーに主人公が隠れたことを知らせ
 
             //プレイヤーを非表示
-            Player.SetActive(false);
+            //Player.SetActive(false);
             activef = true;
             return;
         }
@@ -34,8 +34,14 @@ public class ObjectManager : MonoBehaviour
         {
             hide = false;
             activef = false;
+            Player.tag = "Player";
+            Player.GetComponent<PlayerController>().enabled = true;
             playerController.hide = false;
-            Player.SetActive(true);
+            SendHide2();
+            Color color = Player.gameObject.GetComponent<Renderer>().material.color;
+            color.a = 1.0f;
+            Player.gameObject.GetComponent<Renderer>().material.color = color;
+            // Player.SetActive(true);
             Debug.Log("出た");
         }
     }
@@ -50,6 +56,25 @@ public class ObjectManager : MonoBehaviour
                     refObj = GameObject.Find("Enemy1");
                     OnSearchView d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
+                    break;
+                case 2:
+                    break;
+            }
+        }
+    }
+
+    //ゴミ箱からでたのをお知らせ
+    void SendHide2()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            switch (EnemyNumber[i])
+            {
+                case 1:
+                    GameObject refObj;
+                    refObj = GameObject.Find("Enemy1");
+                    OnSearchView d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
                     break;
                 case 2:
                     break;

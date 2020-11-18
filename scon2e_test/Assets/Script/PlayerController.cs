@@ -169,6 +169,11 @@ public class PlayerController : MonoBehaviour
                 hide = true;
                 //gameObject.SetActive(false);
                 Debug.Log("隠れた");
+                Color color = gameObject.GetComponent<Renderer>().material.color;
+                color.a = 0.0f;
+                gameObject.GetComponent<Renderer>().material.color = color;
+                this.tag = "HidePlayer";
+                GetComponent<PlayerController>().enabled = false;
             }
         }
     }

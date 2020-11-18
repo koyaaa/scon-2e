@@ -193,9 +193,16 @@ public class OnSearchView : MonoBehaviour
             //主人公が隠れたとき
             if (HideSearch == true)
             {
-                if (foundData.IsFound() == false)
+                if (foundData.IsLost())
                 {
                     Debug.Log("隠れた！");
+                    WANING = false;
+                    onLost(targetObject);
+                    Debug.Log("主人公いなくなった: ");
+                    GetComponent<NavMeshAgent>().isStopped = false;
+                    d1.inArea = false;
+                    GetComponent<Renderer>().material.color = d1.origColor;
+                    d1.chaspeed = 0;
                 }
             }
 
