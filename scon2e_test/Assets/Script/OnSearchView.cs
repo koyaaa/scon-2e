@@ -33,10 +33,16 @@ public class OnSearchView : MonoBehaviour
     public bool HunterFlg = false;
     public bool hypnflg = false;
 
+    public GameObject soundObj;
+    public Sound soundManager;
+
     void Start()
     {
+
         Obj = GameObject.Find("ObjectManager");
+        soundObj = GameObject.Find("Soundmanager");
         objectManager = Obj.GetComponent<ObjectManager>();
+        soundManager = soundObj.GetComponent<Sound>();
     }
 
     public float SearchAngle
@@ -143,12 +149,16 @@ public class OnSearchView : MonoBehaviour
                 if (WANING == false&& Time.time > SaveTime + itime)
                 {
                     WANING = true;
+
+                    soundManager.SearchSEflag = true;
+
                     Debug.Log("主人公発見: !");
                     //Debug.Log(" " + SaveTime);
                     onFound(targetObject);
                     d1.inArea = true;
                     GetComponent<Renderer>().material.color = redColor;
                     GetComponent<NavMeshAgent>().isStopped = false;
+
 
                     for (int i = 0; i < 20; i++)
                     {
