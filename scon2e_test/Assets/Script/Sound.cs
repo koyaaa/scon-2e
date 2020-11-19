@@ -7,13 +7,18 @@ public class Sound : MonoBehaviour
     private GameObject player;
     private AudioSource audioSE;
     public AudioClip sound01;
-    public bool SearchSEflag = false;
+    private bool SearchSEflag = true;
+
+    public AudioClip sound1;
+    AudioSource audioSource;
+
     void Start()
     {
         audioSE = gameObject.AddComponent<AudioSource>();
+        //Componentを取得
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (SearchSEflag == true)
@@ -21,6 +26,12 @@ public class Sound : MonoBehaviour
 
             audioSE.PlayOneShot(sound01);
             SearchSEflag = false;
+        }
+        //mouse左が押された
+        if (Input.GetMouseButtonDown(0))
+        {
+            //音(sound1)を鳴らす
+            audioSource.PlayOneShot(sound1);
         }
     }
 }
