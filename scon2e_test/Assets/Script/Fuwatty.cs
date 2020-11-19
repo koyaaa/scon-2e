@@ -14,13 +14,15 @@ public class Fuwatty : MonoBehaviour
     public float chargetime = 1.0f;
     public float speed = 2.0f;
     public Color yellowColor;
+    public float blink_interval;
 
     private float savetime;
     private bool saveflg = false;
     private bool blinkingflg = false;
     private bool accelerationflg = false;
     private float savespd = 0f;
-    private int cnt;
+    private float savetime2;
+    private bool change_flag;
     public float acceltime;
     private float start_acceltime;
     NavMeshAgent agent;
@@ -64,6 +66,7 @@ public class Fuwatty : MonoBehaviour
             if (cooltime < Time.time - savetime && blinkingflg == false && accelerationflg == false)//クールタイム経ったら点滅
             {
                 blinkingflg = true;
+                savetime2 = Time.time;
             }
             //点滅
             if (blinkingflg == true)
@@ -77,7 +80,6 @@ public class Fuwatty : MonoBehaviour
                     blinkingflg = false;
                     accelerationflg = true;
                     GetComponent<NavMeshAgent>().isStopped = false;
-                    cnt = 0;
                     savespd = agent.speed;
                     start_acceltime = Time.time;
                 }
@@ -88,14 +90,19 @@ public class Fuwatty : MonoBehaviour
     //点滅
     private void blinking()
     {
-        if (cnt % 60 == 0)
+        if(blink_interval < Time.time - savetime2)
         {
-            GetComponent<Renderer>().material.color = onSearch.redColor;
+            if(change_flag == true)
+            {
+                GetComponent<Renderer>().material.color = onSearch.redColor;
+                
+            }
+            else
+            {
+                GetComponent<Renderer>().material.color = yellowColor;
+            }
+            change_flag = !change_flag;
+            savetime2 = Time.time;
         }
-        if(cnt++ % 60 == 30)
-        {
-            GetComponent<Renderer>().material.color = yellowColor;
-        }
-
     }
 }

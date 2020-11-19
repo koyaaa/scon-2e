@@ -174,6 +174,8 @@ public class PlayerController : MonoBehaviour
                 gameObject.GetComponent<Renderer>().material.color = color;
                 this.tag = "HidePlayer";
                 GetComponent<PlayerController>().enabled = false;
+                rB.velocity = Vector3.zero;
+                rB.angularVelocity = Vector3.zero;
             }
         }
     }
