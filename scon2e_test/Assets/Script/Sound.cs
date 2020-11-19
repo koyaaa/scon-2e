@@ -7,7 +7,7 @@ public class Sound : MonoBehaviour
     private GameObject player;
     private AudioSource audioSE;
     public AudioClip sound01;
-    private bool SearchSEflag = true;
+    public bool SearchSEflag = false;
 
     public AudioClip sound1;
     AudioSource audioSource;
