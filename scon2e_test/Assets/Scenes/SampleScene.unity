@@ -1797,6 +1797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5fbe9da5e854e4a8876cea1d118b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSearch: {fileID: 1631036807}
   points:
   - {fileID: 1975149692}
   - {fileID: 1072968361}
@@ -1806,6 +1807,7 @@ MonoBehaviour:
   inArea: 0
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
+  Timemin: 0
 --- !u!54 &1631036805
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1860,6 +1862,7 @@ MonoBehaviour:
   redColor: {r: 1, g: 0, b: 0, a: 0}
   yellowColor: {r: 0.9989959, g: 1, b: 0, a: 0}
   itime: 1
+  WANING: 0
 --- !u!1 &1657927352
 GameObject:
   m_ObjectHideFlags: 0
