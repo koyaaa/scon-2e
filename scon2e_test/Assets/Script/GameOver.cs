@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     GameManager gameManager;
+    public OnSearchView onSearch;
+
+    //public bool GameOverFlag = false;
 
     void Start()
     {
@@ -14,8 +17,10 @@ public class GameOver : MonoBehaviour
     //プレイヤーが当たり判定に入った時の処理
     void OnTriggerEnter(Collider CapsuleCollider)
     {
-        if (CapsuleCollider.gameObject.tag == "Player")
-        {
+        GameObject enemy = CapsuleCollider.transform.parent.gameObject;
+        onSearch = enemy.GetComponent<OnSearchView>();
+        if (CapsuleCollider.gameObject.tag == "Enemy" && onSearch.WANING == true)
+        { 
             gameManager.GameOver();
         }
     }

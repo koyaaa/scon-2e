@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
         //ボタンにイベント設定
         buttons[0].onClick.AddListener(Retry);
         buttons[1].onClick.AddListener(Return);
-
     }
 
     public void GameClear()
@@ -125,11 +124,10 @@ public class GameManager : MonoBehaviour
         Destroy(gameOverCanvasClone);
     }
 
-    //最初のシーンに戻る
+    //タイトルに戻る
     public void Return()
     {
-        Destroy(gameOverCanvasClone);
-
+        SceneManager.LoadScene("Start");
         MoveToStage(0);
     }
 }

@@ -38,18 +38,26 @@ public class ObjectManager : MonoBehaviour
             Player.GetComponent<PlayerController>().enabled = true;
             playerController.hide = false;
             SendHide2();
+
             Color color = Player.gameObject.GetComponent<Renderer>().material.color;
             color.a = 1.0f;
             Player.gameObject.GetComponent<Renderer>().material.color = color;
+
+
+
+            Color color2 = Player.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color;
+            color2.a = 1.0f;
+            Player.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = color2;
+
             // Player.SetActive(true);
             Debug.Log("出た");
         }
     }
     void SendHide()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 1; i < 7; i++)
         {
-            switch (EnemyNumber[i])
+            switch (i)
             {
                 case 1:
                     GameObject refObj;
@@ -58,6 +66,46 @@ public class ObjectManager : MonoBehaviour
                     d2.HideSearch = true;
                     break;
                 case 2:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy2");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 3:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy3");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 4:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy4");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 5:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy5");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 6:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy6");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 7:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy7");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 8:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy8");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
                     break;
             }
         }
@@ -66,9 +114,9 @@ public class ObjectManager : MonoBehaviour
     //ゴミ箱からでたのをお知らせ
     void SendHide2()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 1; i < 7; i++)
         {
-            switch (EnemyNumber[i])
+            switch (/*EnemyNumber[i]*/i)
             {
                 case 1:
                     GameObject refObj;
@@ -77,6 +125,46 @@ public class ObjectManager : MonoBehaviour
                     d2.HideSearch = false;
                     break;
                 case 2:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy2");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
+                    break;
+                case 3:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy3");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
+                    break;
+                case 4:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy4");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
+                    break;
+                case 5:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy5");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
+                    break;
+                case 6:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy6");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
+                    break;
+                case 7:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy7");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
+                    break;
+                case 8:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Enemy8");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = false;
                     break;
             }
         }

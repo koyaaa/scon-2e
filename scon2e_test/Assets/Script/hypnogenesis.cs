@@ -18,6 +18,7 @@ public class hypnogenesis : MonoBehaviour
     private float save_time2;
     private GameObject enemy;
     private Rigidbody rB;
+    private bool hypnflg;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,7 @@ public class hypnogenesis : MonoBehaviour
                     }
                 }
             }
+            hypnflg = true;
             Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
         }
         //敵が機能停止してから時間が経ったら機能再開
@@ -74,9 +76,10 @@ public class hypnogenesis : MonoBehaviour
         }
 
         //催眠モーションが終わったら動ける
-        if(rigor_time < Time.time - save_time2)
+        if(rigor_time < Time.time - save_time2 && hypnflg == true)
         {
             this.GetComponent<PlayerController>().enabled = true;
+            hypnflg = false;
         }
     }
 }

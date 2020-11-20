@@ -169,9 +169,15 @@ public class PlayerController : MonoBehaviour
                 hide = true;
                 //gameObject.SetActive(false);
                 Debug.Log("隠れた");
+
                 Color color = gameObject.GetComponent<Renderer>().material.color;
                 color.a = 0.0f;
                 gameObject.GetComponent<Renderer>().material.color = color;
+
+                Color color2 = transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color;
+                color2.a = 0.0f;
+                transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = color2;
+
                 this.tag = "HidePlayer";
                 GetComponent<PlayerController>().enabled = false;
                 rB.velocity = Vector3.zero;

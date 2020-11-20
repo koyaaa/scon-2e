@@ -32,9 +32,15 @@ public class OnSearchView : MonoBehaviour
     public bool HideSearch = false;//主人公が隠れたときにtrueになる。
     public bool HunterFlg = false;
     public bool hypnflg = false;
+    public float crowl_speed;
+    public float chase_speed;
+        
+    NavMeshAgent agent;
 
     public GameObject soundObj;
     public Sound soundManager;
+
+    private bool atmatm = false;
 
     void Start()
     {
@@ -43,6 +49,7 @@ public class OnSearchView : MonoBehaviour
         soundObj = GameObject.Find("Soundmanager");
         objectManager = Obj.GetComponent<ObjectManager>();
         soundManager = soundObj.GetComponent<Sound>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     public float SearchAngle
@@ -113,7 +120,33 @@ public class OnSearchView : MonoBehaviour
             
             bool isFound = CheckFoundObject(targetObject);
             foundData.Update(isFound);
-           
+
+            //主人公が隠れたとき
+            if (HideSearch == true && atmatm == false)
+            {
+                //if (foundData.IsLost())
+                //{
+                agent.speed = crowl_speed;
+                Debug.Log("隠れた！");
+                WANING = false;
+                onLost(targetObject);
+                Debug.Log("主人公いなくなった: ");
+                GetComponent<NavMeshAgent>().isStopped = false;
+                d1.inArea = false;
+                GetComponent<Renderer>().material.color = d1.origColor;
+                d1.chaspeed = 0;
+                atmatm = true;
+                //}
+            }
+            if (HideSearch == true)
+            {
+                continue;
+            }
+            if (atmatm ==true && HideSearch == false)
+            {
+                continue;
+            }
+
             if (foundData.IsFound() && WANING == false)
             {
                
@@ -151,6 +184,7 @@ public class OnSearchView : MonoBehaviour
                     WANING = true;
 
                     soundManager.SearchSEflag = true;
+                    agent.speed = chase_speed;
 
                     Debug.Log("主人公発見: !");
                     //Debug.Log(" " + SaveTime);
@@ -184,7 +218,7 @@ public class OnSearchView : MonoBehaviour
                     {
 
 
-
+                        agent.speed = crowl_speed;
                         WANING = false;
                         onLost(targetObject);
                         Debug.Log("主人公いなくなった: ");
@@ -200,21 +234,7 @@ public class OnSearchView : MonoBehaviour
                 }
             }
 
-            //主人公が隠れたとき
-            if (HideSearch == true)
-            {
-                if (foundData.IsLost())
-                {
-                    Debug.Log("隠れた！");
-                    WANING = false;
-                    onLost(targetObject);
-                    Debug.Log("主人公いなくなった: ");
-                    GetComponent<NavMeshAgent>().isStopped = false;
-                    d1.inArea = false;
-                    GetComponent<Renderer>().material.color = d1.origColor;
-                    d1.chaspeed = 0;
-                }
-            }
+            
 
         }
       
