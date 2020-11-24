@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameClear : MonoBehaviour
 {
     GameManager gameManager;
-
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
