@@ -19,11 +19,17 @@ public class hypnogenesis : MonoBehaviour
     private GameObject enemy;
     private Rigidbody rB;
     private bool hypnflg;
+    public GameObject soundObj;
+    public Sound soundManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rB = GetComponent<Rigidbody>();
+        soundObj = GameObject.Find("Soundmanager");
+        soundManager = soundObj.GetComponent<Sound>();
+
     }
 
     // Update is called once per frame
@@ -32,6 +38,9 @@ public class hypnogenesis : MonoBehaviour
         //催眠する(XボタンかEキー)
         if (Input.GetButtonDown("Xbutton") && hypnflg == false)
         {
+            //催眠音
+            soundManager.HypnoSEflag = true;
+
             //催眠中プレイヤーの硬直
             this.GetComponent<PlayerController>().enabled = false;
             rB.velocity = Vector3.zero;
