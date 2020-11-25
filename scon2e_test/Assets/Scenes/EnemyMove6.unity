@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSearch: {fileID: 1631036807}
+  enemy_parent: {fileID: 0}
   ray_distance: 0.8
   stop_time: 10
   blueColor: {r: 0, g: 0.13357353, b: 1, a: 0}
@@ -2051,6 +2052,8 @@ MonoBehaviour:
   HideSearch: 0
   HunterFlg: 0
   hypnflg: 0
+  soundObj: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!114 &1631036808
 MonoBehaviour:
   m_ObjectHideFlags: 0

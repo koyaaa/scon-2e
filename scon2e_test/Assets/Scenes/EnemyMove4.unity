@@ -464,6 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 395442466}
   Player: {fileID: 0}
+  EnemyNumber: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &332925154
 Transform:
   m_ObjectHideFlags: 0
@@ -588,20 +589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566215fc1b825204e9231d03f9d392df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  brake: 0.5
-  goalOn: 0
-  explosion: {fileID: 0}
-  goalText: {fileID: 0}
-  goalButton: {fileID: 0}
-  failText: {fileID: 0}
-  failButton: {fileID: 0}
-  jumpForce: 20
-  turboForce: 2
-  moveTurnSpeed: 10
-  vCamera: {fileID: 0}
-  ReverseKey: 1
-  hide: 0
 --- !u!54 &395442467
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1050,7 +1037,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800160388}
-  m_LocalRotation: {x: 0.11485545, y: 0.00000001761856, z: -0.000000002037069, w: 0.9933822}
+  m_LocalRotation: {x: 0.11485545, y: -0.000000017618557, z: 0.0000000020370685, w: 0.9933822}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1881,6 +1868,16 @@ MonoBehaviour:
   yellowColor: {r: 0.9989959, g: 1, b: 0, a: 0}
   itime: 1
   WANING: 0
+  EnemyNumber: 0
+  Obj: {fileID: 0}
+  objectManager: {fileID: 0}
+  HideSearch: 0
+  HunterFlg: 0
+  hypnflg: 0
+  crowl_speed: 0
+  chase_speed: 0
+  soundObj: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!114 &1631036808
 MonoBehaviour:
   m_ObjectHideFlags: 0
