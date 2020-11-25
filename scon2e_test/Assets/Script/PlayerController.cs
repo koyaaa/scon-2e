@@ -17,15 +17,15 @@ public class PlayerController : MonoBehaviour
 
     //    public Text goalText;
     public bool goalOn;
-    public ParticleSystem explosion;
+   // public ParticleSystem explosion;
    // public ParticleSystem light;
-    public Text goalText;
-    public GameObject goalButton;
-    public Text failText;
-    public GameObject failButton;
-    private Vector3 height;
-    public float jumpForce = 20.0f;
-    private float jumpTime = 0.0f;
+    //public Text goalText;
+    //public GameObject goalButton;
+    //public Text failText;
+    //public GameObject failButton;
+   // private Vector3 height;
+    //public float jumpForce = 20.0f;
+    //private float jumpTime = 0.0f;
     public float turboForce = 2.0f;
     public float ray_distance;
 
@@ -39,16 +39,16 @@ public class PlayerController : MonoBehaviour
     //true:ごみ箱に隠れてるfalse:隠れてない
     public bool hide;
     //Camera camera;
-
+    public float angleSpeed = 4.0f;
 
     void Start()
     {
         rB = GetComponent<Rigidbody>();
-        goalText.enabled = false;
-        goalButton.SetActive(false);
+        //goalText.enabled = false;
+        //goalButton.SetActive(false);
         goalOn = false;
-        failText.enabled = false;
-        failButton.SetActive(false);
+        //failText.enabled = false;
+        //failButton.SetActive(false);
         hide = false;
        // ReverseKey = false;
 
@@ -107,7 +107,8 @@ public class PlayerController : MonoBehaviour
             // キャラクターの向きを進行方向に
             if (moveForward != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(moveForward);
+                Quaternion q = Quaternion.LookRotation(moveForward);
+                transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * angleSpeed);
             }
 
             if (rbVelo.z < 0)
@@ -120,15 +121,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        height = this.GetComponent<Transform>().position;
-        if (height.y <= -3.0f)
-        {
-            explosion.transform.position = this.transform.position;
-            explosion.Play();
-            this.gameObject.SetActive(false);
-            failText.enabled = true;
-            failButton.SetActive(true);
-        }
+        //height = this.GetComponent<Transform>().position;
+        //if (height.y <= -3.0f)
+        //{
+        //    explosion.transform.position = this.transform.position;
+        //    explosion.Play();
+        //    this.gameObject.SetActive(false);
+        //    failText.enabled = true;
+        //    failButton.SetActive(true);
+        //}
 
 
         //if (height.y >= 3f)
@@ -140,23 +141,23 @@ public class PlayerController : MonoBehaviour
         {
             jumpTime--;
         }
-        else*/ if (height.y <= 0f)
-        {
-            jumpTime = 60f;
-        }
-        else if (height.y <= 0.5f)
-        {
-            jumpTime = 0f;
-        }
+        ////else if (height.y <= 0f)
+        ////{
+        //    jumpTime = 60f;
+        //}
+        //else if (height.y <= 0.5f)
+        //{
+        //    jumpTime = 0f;
+        //}
 
 
         
-        if (jumpTime == 0 && (Input.GetKey(KeyCode.Space) || Input.GetKeyDown("joystick button 1")))
-        {
-            rB.AddForce(0, jumpForce, 0, ForceMode.Impulse);
-            jumpTime = 60f;
-        }
-
+        //if (jumpTime == 0 && (Input.GetKey(KeyCode.Space) || Input.GetKeyDown("joystick button 1")))
+        //{
+        //    rB.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        //    jumpTime = 60f;
+        //}
+        */
     }
 
     void Update()
