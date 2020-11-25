@@ -335,9 +335,9 @@ GameObject:
   - component: {fileID: 91233752}
   - component: {fileID: 91233751}
   - component: {fileID: 91233750}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube9
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,9 +646,9 @@ GameObject:
   - component: {fileID: 230038859}
   - component: {fileID: 230038858}
   - component: {fileID: 230038862}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -877,9 +877,9 @@ GameObject:
   - component: {fileID: 342847553}
   - component: {fileID: 342847552}
   - component: {fileID: 342847556}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube8
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1469,7 +1469,7 @@ GameObject:
   - component: {fileID: 413585841}
   m_Layer: 0
   m_Name: Cube5
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1577,9 +1577,9 @@ GameObject:
   - component: {fileID: 444314845}
   - component: {fileID: 444314844}
   - component: {fileID: 444314848}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube6
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1688,9 +1688,9 @@ GameObject:
   - component: {fileID: 445161009}
   - component: {fileID: 445161008}
   - component: {fileID: 445161007}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube10
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1798,9 +1798,9 @@ GameObject:
   - component: {fileID: 523056603}
   - component: {fileID: 523056602}
   - component: {fileID: 523056601}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2324,7 +2324,7 @@ GameObject:
   - component: {fileID: 701814462}
   - component: {fileID: 701814461}
   - component: {fileID: 701814460}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GomiPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2745,6 +2745,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4859836928800020, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.02
@@ -2809,6 +2817,14 @@ PrefabInstance:
     - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
       propertyPath: m_Name
       value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4859836928800020, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2926,7 +2942,7 @@ GameObject:
   - component: {fileID: 768823675}
   - component: {fileID: 768823674}
   - component: {fileID: 768823677}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3308,6 +3324,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 1088665013387182, guid: 83eef17c2a6385b499fe294c1d56942e, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088665013387182, guid: 83eef17c2a6385b499fe294c1d56942e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4627955835572668, guid: 83eef17c2a6385b499fe294c1d56942e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.32
@@ -3443,7 +3467,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.22601496, y: 0.000000033096505, z: -0.0000000076790085, w: 0.97412384}
+  m_LocalRotation: {x: 0.22601496, y: -0.000000007130247, z: 0.0000000016543508, w: 0.97412384}
   m_LocalPosition: {x: 0.34, y: 2.250657, z: -6.2473145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3730,7 +3754,7 @@ PrefabInstance:
     - target: {fileID: 6324248092650470025, guid: 9a04f0c73d8e52646a526f2776fce359,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.49112424
+      value: -0.4911242
       objectReference: {fileID: 0}
     - target: {fileID: 6324248092650470025, guid: 9a04f0c73d8e52646a526f2776fce359,
         type: 3}
@@ -3808,9 +3832,9 @@ GameObject:
   - component: {fileID: 1205485840}
   - component: {fileID: 1205485839}
   - component: {fileID: 1205485838}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GomiPoint1 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4087,7 +4111,7 @@ GameObject:
   - component: {fileID: 1284602591}
   - component: {fileID: 1284602590}
   - component: {fileID: 1284602593}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4195,6 +4219,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4859836928800020, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.12
@@ -4262,9 +4294,9 @@ GameObject:
   - component: {fileID: 1290692872}
   - component: {fileID: 1290692871}
   - component: {fileID: 1290692875}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube7
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4591,9 +4623,9 @@ GameObject:
   - component: {fileID: 1352913018}
   - component: {fileID: 1352913017}
   - component: {fileID: 1352913021}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GomiPoint1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4745,6 +4777,14 @@ PrefabInstance:
     - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
       propertyPath: m_Name
       value: Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475413582268474, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4859836928800020, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5805,7 +5845,7 @@ GameObject:
   - component: {fileID: 1657927354}
   - component: {fileID: 1657927353}
   - component: {fileID: 1657927357}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6009,9 +6049,9 @@ GameObject:
   - component: {fileID: 1695880324}
   - component: {fileID: 1695880323}
   - component: {fileID: 1695880322}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6120,9 +6160,9 @@ GameObject:
   - component: {fileID: 1722946274}
   - component: {fileID: 1722946273}
   - component: {fileID: 1722946277}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6395,7 +6435,7 @@ GameObject:
   - component: {fileID: 1796127699}
   - component: {fileID: 1796127698}
   - component: {fileID: 1796127697}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6702,7 +6742,7 @@ PrefabInstance:
     - target: {fileID: 6324248092650470025, guid: 9a04f0c73d8e52646a526f2776fce359,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.49112424
+      value: -0.4911242
       objectReference: {fileID: 0}
     - target: {fileID: 6324248092650470025, guid: 9a04f0c73d8e52646a526f2776fce359,
         type: 3}
@@ -6879,7 +6919,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899662198}
-  m_LocalRotation: {x: 0.23307815, y: 0.000000008366242, z: -0.0000000020052158, w: 0.972458}
+  m_LocalRotation: {x: 0.23307815, y: -0.000000008366242, z: 0.0000000020052158, w: 0.972458}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6900,7 +6940,7 @@ GameObject:
   - component: {fileID: 1914509163}
   - component: {fileID: 1914509162}
   - component: {fileID: 1914509166}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GomiPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7010,9 +7050,9 @@ GameObject:
   - component: {fileID: 1926487134}
   - component: {fileID: 1926487133}
   - component: {fileID: 1926487132}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7350,9 +7390,9 @@ GameObject:
   - component: {fileID: 2070281327}
   - component: {fileID: 2070281326}
   - component: {fileID: 2070281330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7490,9 +7530,9 @@ GameObject:
   - component: {fileID: 2115808361}
   - component: {fileID: 2115808360}
   - component: {fileID: 2115808359}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
