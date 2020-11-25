@@ -124,8 +124,6 @@ public class OnSearchView : MonoBehaviour
             //主人公が隠れたとき
             if (HideSearch == true && atmatm == false)
             {
-
-                
                 //if (foundData.IsLost())
                 //{
                 agent.speed = crowl_speed;
@@ -151,9 +149,8 @@ public class OnSearchView : MonoBehaviour
 
             if (foundData.IsFound() && WANING == false)
             {
-                soundManager.WhoSEflag = true;
-
-                onFound(targetObject);
+               
+                    onFound(targetObject);
                     Debug.Log("誰: ？");
                     //Debug.Log(" " + SaveTime);
                     d1.inArea = true;
