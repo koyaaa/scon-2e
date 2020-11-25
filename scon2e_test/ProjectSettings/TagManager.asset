@@ -7,6 +7,9 @@ TagManager:
   - Gomibako
   - Enemy
   - HidePlayer
+  - EnemyHit
+  - Wall
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,9 +21,9 @@ TagManager:
   - 
   - Player
   - Search
-  - 
-  - 
-  - 
+  - gomi
+  - Wall
+  - Ground
   - 
   - 
   - 
