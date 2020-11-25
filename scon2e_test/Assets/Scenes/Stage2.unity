@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 617564c35f684bd4d828f287264db3f5, type: 2}
 --- !u!1 &388060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1461,10 @@ MonoBehaviour:
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
   Timemin: 3
+  rotate_time: 0
+  turning_angle: 0
+  rotspd: 0
+  chase_angle: 0
 --- !u!195 &392650037
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1603,9 +1607,9 @@ GameObject:
   - component: {fileID: 395442463}
   - component: {fileID: 395442467}
   - component: {fileID: 395442470}
-  - component: {fileID: 395442469}
   - component: {fileID: 395442468}
   - component: {fileID: 395442466}
+  - component: {fileID: 395442469}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1740,15 +1744,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 395442461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf345d8161180ee4dbb8e82c001fc767, type: 3}
+  m_Script: {fileID: 11500000, guid: 3872f5cafabbfad409bea9722a023534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onSearch: {fileID: 1631036807}
   enemy_parent: {fileID: 1631036798}
-  ray_distance: 0
-  stop_time: 0
-  blueColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  ray_distance: 10
+  stop_time: 1.55
+  blueColor: {r: 0, g: 0.07410216, b: 1, a: 0}
+  defaultColor: {r: 0.76470596, g: 0.73333335, b: 0.6431373, a: 0}
   hypn_animation: 0
   rigor_time: 0
 --- !u!114 &395442470
@@ -1773,6 +1777,7 @@ MonoBehaviour:
   failButton: {fileID: 0}
   jumpForce: 20
   turboForce: 2
+  ray_distance: 0
   moveTurnSpeed: 10
   vCamera: {fileID: 0}
   ReverseKey: 1
@@ -2987,6 +2992,10 @@ MonoBehaviour:
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
   Timemin: 3
+  rotate_time: 0
+  turning_angle: 0
+  rotspd: 0
+  chase_angle: 0
 --- !u!195 &706540318
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5529,6 +5538,10 @@ MonoBehaviour:
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
   Timemin: 3
+  rotate_time: 0
+  turning_angle: 0
+  rotspd: 0
+  chase_angle: 0
 --- !u!195 &1329932336
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6423,6 +6436,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1233630853806618, guid: 7cce1641f65556d44953cedc54d47149, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4242135893196936, guid: 7cce1641f65556d44953cedc54d47149, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2
@@ -6549,6 +6566,10 @@ MonoBehaviour:
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
   Timemin: 3
+  rotate_time: 0
+  turning_angle: 0
+  rotspd: 0
+  chase_angle: 0
 --- !u!195 &1598156927
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6749,6 +6770,10 @@ MonoBehaviour:
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
   Timemin: 3
+  rotate_time: 0
+  turning_angle: 0
+  rotspd: 0
+  chase_angle: 0
 --- !u!195 &1610063768
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7184,6 +7209,10 @@ MonoBehaviour:
   chaspeed: 0.05
   origColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
   Timemin: 3
+  rotate_time: 0
+  turning_angle: 0
+  rotspd: 0
+  chase_angle: 0
 --- !u!54 &1631036805
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7655,7 +7684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f0ffa9a456da749bc18cacde465a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hypn: {fileID: 395442469}
+  hypn: {fileID: 0}
   LoopCount: 7
 --- !u!95 &1725761425
 Animator:
@@ -8160,18 +8189,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1860146250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b0b7aa9f5cf3e54899b026bd3f06601, type: 3}
+  m_Script: {fileID: 11500000, guid: 24fcc84bdfe85e74b8a352c7465e034f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName: []
-  gameClearCanvasPrefab: {fileID: 710976604281922894, guid: ab067c72926f87a428558b69300c510b,
-    type: 3}
-  gameOverCanvasPrefab: {fileID: 3552123844153456533, guid: d04706d74ae92d24a8c1d5cf7d9ebce1,
-    type: 3}
-  gameClearCanvasClone: {fileID: 710976604281922894, guid: ab067c72926f87a428558b69300c510b,
-    type: 3}
-  gameOverCanvasClone: {fileID: 3552123844153456533, guid: d04706d74ae92d24a8c1d5cf7d9ebce1,
-    type: 3}
 --- !u!4 &1860146252
 Transform:
   m_ObjectHideFlags: 0
