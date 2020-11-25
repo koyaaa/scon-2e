@@ -18,9 +18,16 @@ public class WalkAround : MonoBehaviour
     public int Timemin = 0;//きょろきょろさせる
     private float SaveTime = 0;
 
-    
-    
-
+    private Transform from = null;
+    private Transform to = null;
+    public float rotate_time; //振り向きの時間
+    private bool rotflg;
+    private float angle;
+    private bool WANING_rotflg;
+    public float turning_angle;
+    private bool rot_direction;
+    public float rotspd;
+    public float chase_angle;
 
 
     void Start()
@@ -33,18 +40,85 @@ public class WalkAround : MonoBehaviour
    
     void Update()
     {
+        if (onSearch.WANING == true)
+        {
+            //Debug.Log(angle);           
+            if (WANING_rotflg == true)
+            {
+                //加算
+                if (rot_direction == true)
+                {
+                    this.transform.Rotate(new Vector3(0f, rotspd, 0f));
+                }
+                else//減算
+                {
+                    this.transform.Rotate(new Vector3(0f, -rotspd, 0f));
+                }
+
+                from = this.transform;
+                var diff = to.position - from.position;
+
+                var axis = Vector3.Cross(from.forward, diff);
+
+                angle = Vector3.Angle(from.forward, diff)
+                             * (axis.y < 0 ? -1 : 1);
+
+                if (Mathf.Abs(angle) < chase_angle)
+                {
+                    WANING_rotflg = false;
+                }
+            }
+            
+            if(WANING_rotflg == false){            
+                agent.destination = target.transform.position;//ターゲットに向かう
+                GetComponent<NavMeshAgent>().isStopped = false;
+                from = this.transform;
+                to = target.transform;
+                var diff = to.position - from.position;
+
+                var axis = Vector3.Cross(from.forward, diff);
+
+                angle = Vector3.Angle(from.forward, diff)
+                             * (axis.y < 0 ? -1 : 1);
+            }
+            if (WANING_rotflg == false &&
+                Mathf.Abs(angle) > turning_angle)
+            {
+                //Debug.Log(angle);
+                if (angle > 0)
+                {
+                    rot_direction = true;
+                }
+                else
+                {
+                    rot_direction = false;
+                }
+                WANING_rotflg = true;
+                GetComponent<NavMeshAgent>().isStopped = true;
+            }
+            return;
+        }
+
         if (agent.remainingDistance < 0.5f && SaveTime == 0)
         {
             SaveTime = Time.time;
             GetComponent<NavMeshAgent>().isStopped = true;
         }
 
-        if (agent.remainingDistance < 0.5f && Time.time > SaveTime + Timemin)
+        if (agent.remainingDistance < 0.5f && Time.time > SaveTime + Timemin && rotflg == false)
         {
-            //Debug.Log("次へ");
-            GetComponent<NavMeshAgent>().isStopped = false;
-            GotoNextPoint();
+            from = this.transform;
+            to = points[destPoint].transform;
+            var diff = to.position - from.position;
+
+            var axis = Vector3.Cross(from.forward, diff);
+
+            angle = Vector3.Angle(from.forward, diff)
+                         * (axis.y < 0 ? -1 : 1);
+            angle = from.transform.localEulerAngles.y + angle;
+            rotflg = true;
             SaveTime = 0;
+            //Debug.Log(angle);
         }
 
         if (target.activeInHierarchy == false)
@@ -52,23 +126,29 @@ public class WalkAround : MonoBehaviour
             GetComponent<Renderer>().material.color = origColor;
         }
         
-        if(onSearch.WANING == true)
+        if(rotflg == true)
         {
-            //Debug.Log("はいった");
-            agent.destination = target.transform.position;//ターゲットに向かう
-            GetComponent<NavMeshAgent>().isStopped = false;
+            GetComponent<NavMeshAgent>().isStopped = true;
 
+            // 4秒かけて、y軸を260度回転
+            Hashtable hash = new Hashtable();
+            hash.Add("y", angle);
+            hash.Add("time", rotate_time);
+            hash.Add("oncompletetarget", this.gameObject); // メソッドがあるオブジェクトを指定
+            hash.Add("oncomplete", "GotoNextPoint"); // 実行するタイミング、実行するメソッド名
+            iTween.RotateTo(this.gameObject, hash);
         }
 
     }
 
     void GotoNextPoint()
     {
+        rotflg = false;
+        GetComponent<NavMeshAgent>().isStopped = false;
         if (points.Length == 0)
             return;
-
         agent.destination = points[destPoint].position;
         destPoint = (destPoint + 1) % points.Length;
+        
     }
-   
 }

@@ -30,7 +30,7 @@ public class hypnogenesis : MonoBehaviour
     void Update()
     {
         //催眠する(XボタンかEキー)
-        if (Input.GetButtonDown("Xbutton"))
+        if (Input.GetButtonDown("Xbutton") && hypnflg == false)
         {
             //催眠中プレイヤーの硬直
             this.GetComponent<PlayerController>().enabled = false;
@@ -47,13 +47,13 @@ public class hypnogenesis : MonoBehaviour
             if (Physics.Raycast(ray, out hit, ray_distance))
             {
                 //敵がヒット&&敵の色が赤でも黄色でもない
-                if (hit.collider.tag == "EnemyHit" && onSearch.WANING == false
+                if (hit.collider.tag == "EnemyHit" /*&& onSearch.WANING == false*/
                     /*&& hit.collider.GetComponent<Renderer>().material.color != onSearch.yellowColor*/)
                 {
-                    
                     enemy = hit.collider.gameObject;
                     enemy_parent = enemy.transform.parent.gameObject;
-                    if (enemy_parent.GetComponent<Renderer>().material.color != onSearch.yellowColor) {
+                    onSearch = enemy_parent.GetComponent<OnSearchView>();
+                    if (enemy_parent.GetComponent<Renderer>().material.color != onSearch.yellowColor && onSearch.WANING == false) {
                         //ヒットした敵の索敵諸々のコンポーネントの停止
                         enemy_parent.GetComponent<NavMeshAgent>().enabled = false;
                         enemy_parent.GetComponent<WalkAround>().enabled = false;

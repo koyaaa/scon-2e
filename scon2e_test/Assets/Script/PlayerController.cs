@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 20.0f;
     private float jumpTime = 0.0f;
     public float turboForce = 2.0f;
+    public float ray_distance;
 
     Vector3 moveDirection;
     public float moveTurnSpeed = 10f;
@@ -158,7 +159,43 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    //プレイヤー前方のボックスコライダー
+    void Update()
+    {
+        //ごみ箱に隠れる(BボタンかFキー)
+        if (hide == false && Input.GetButtonDown("Bbutton"))
+        {
+            //Rayの発射地点の座標と発射する方向の設定
+            Ray ray = new Ray(this.transform.position, this.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, ray_distance))
+            {
+                //ヒットしたものがごみ箱
+                if (hit.collider.tag == "Gomibako")
+                {
+                    hide = true;
+                    //gameObject.SetActive(false);
+                    Debug.Log("隠れた");
+
+                    Color color = gameObject.GetComponent<Renderer>().material.color;
+                    color.a = 0.0f;
+                    gameObject.GetComponent<Renderer>().material.color = color;
+
+                    Color color2 = transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color;
+                    color2.a = 0.0f;
+                    transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = color2;
+
+                    this.tag = "HidePlayer";
+                    GetComponent<PlayerController>().enabled = false;
+                    rB.velocity = Vector3.zero;
+                    rB.angularVelocity = Vector3.zero;
+                }
+            }
+            Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
+        }
+    }
+
+    /*//プレイヤー前方のボックスコライダー
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Gomibako")
@@ -184,7 +221,7 @@ public class PlayerController : MonoBehaviour
                 rB.angularVelocity = Vector3.zero;
             }
         }
-    }
+    }*/
 
     /*void OnTriggerEnter(Collider other)
     {
