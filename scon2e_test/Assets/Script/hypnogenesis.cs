@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class hypnogenesis : MonoBehaviour
 {
     public OnSearchView onSearch;
+    public hypnAnimation hypn;
     public GameObject enemy_parent;
 
     public float ray_distance;
@@ -13,7 +14,6 @@ public class hypnogenesis : MonoBehaviour
     public Color blueColor;
     public Color defaultColor;
     public bool hypn_animation;
-    public float rigor_time;
     private float save_time;
     private float save_time2;
     private GameObject enemy;
@@ -35,6 +35,13 @@ public class hypnogenesis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //催眠モーションが終わったら動ける
+        if (hypn.stopflg == false)
+        {
+            this.GetComponent<PlayerController>().enabled = true;
+            hypnflg = false;
+        }
+
         //催眠する(XボタンかEキー)
         if (Input.GetButtonDown("Xbutton") && hypnflg == false)
         {
@@ -84,11 +91,5 @@ public class hypnogenesis : MonoBehaviour
             onSearch.hypnflg = false;
         }
 
-        //催眠モーションが終わったら動ける
-        if(rigor_time < Time.time - save_time2 && hypnflg == true)
-        {
-            this.GetComponent<PlayerController>().enabled = true;
-            hypnflg = false;
-        }
     }
 }

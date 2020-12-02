@@ -6,7 +6,7 @@ public class hypnAnimation : MonoBehaviour
 {
     public hypnogenesis hypn;
     public int LoopCount;
-    private bool stopflg;
+    public bool stopflg;
     Animator animator;
 
     // Start is called before the first frame update
