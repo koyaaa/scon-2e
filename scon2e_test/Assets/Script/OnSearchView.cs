@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class OnSearchView : MonoBehaviour
@@ -20,6 +21,7 @@ public class OnSearchView : MonoBehaviour
     public Color redColor;
     public Color yellowColor;
     
+    //探す時間
     public float itime = 1.0f;
 
     private float SaveTime;
@@ -42,6 +44,15 @@ public class OnSearchView : MonoBehaviour
 
     private bool atmatm = false;
 
+
+    //　SearchUI表示用
+    //[SerializeField]
+    private GameObject SearchUI;
+    //　?マーク表示用
+    private Image Deimage;
+    //見付けた場合true
+    private bool De = false;
+
     void Start()
     {
 
@@ -50,6 +61,9 @@ public class OnSearchView : MonoBehaviour
         objectManager = Obj.GetComponent<ObjectManager>();
         soundManager = soundObj.GetComponent<Sound>();
         agent = GetComponent<NavMeshAgent>();
+        SearchUI =  transform.FindChild("SearechUI/Image").gameObject;
+        Deimage = SearchUI.transform.Find("DeImage").GetComponent<Image>();
+        SearchUI.SetActive(false);
     }
 
     public float SearchAngle
@@ -100,6 +114,17 @@ public class OnSearchView : MonoBehaviour
             UpdateFoundObject();
         }
 
+        //見つかっている
+        if (De == true)
+        {
+            SearchUI.SetActive(true);
+            //Deimage.fillAmount = 0f;
+            Deimage.fillAmount = 1.0f  - ((float)(Time.time - SaveTime) / (float)itime);
+        }else if(De == false)
+        {
+            SearchUI.SetActive(false);
+        }
+
     }
 
     private void UpdateFoundObject()
@@ -130,6 +155,9 @@ public class OnSearchView : MonoBehaviour
                 //{
                 agent.speed = crowl_speed;
                 Debug.Log("隠れた！");
+                /**/
+                De = false;
+                /**/
                 WANING = false;
                 onLost(targetObject);
                 Debug.Log("主人公いなくなった: ");
@@ -155,8 +183,11 @@ public class OnSearchView : MonoBehaviour
 
                 onFound(targetObject);
                     Debug.Log("誰: ？");
-                    //Debug.Log(" " + SaveTime);
-                    d1.inArea = true;
+                /**/
+                De = true;
+                /**/
+                //Debug.Log(" " + SaveTime);
+                d1.inArea = true;
                     GetComponent<Renderer>().material.color = yellowColor;
                     GetComponent<NavMeshAgent>().isStopped = true;
 
@@ -177,8 +208,12 @@ public class OnSearchView : MonoBehaviour
                 d1.inArea = false;
                 GetComponent<Renderer>().material.color = d1.origColor;
                 d1.chaspeed = 0;
+
+                /**/
+                De = false;
+                /**/
             }
-            
+
             if (d1.inArea == true)
             {
 
@@ -335,6 +370,10 @@ public class OnSearchView : MonoBehaviour
             d1.inArea = false;
             GetComponent<Renderer>().material.color = d1.origColor;
             d1.chaspeed = 0;
+
+            /**/
+            De = false;
+            /**/
         }
 
         m_foundList.Remove(foundData);
