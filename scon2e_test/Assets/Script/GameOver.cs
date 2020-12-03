@@ -17,8 +17,10 @@ public class GameOver : MonoBehaviour
         onSearch = this.GetComponent<OnSearchView>();
         if (onSearch.WANING == true)
         {
+            Vector3 pos = this.transform.position;
+            pos.y += 0.5f;    // y座標へ0.5加算
             //Rayの発射地点の座標と発射する方向の設定
-            Ray ray = new Ray(this.transform.position, this.transform.forward);
+            Ray ray = new Ray(pos, this.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, ray_distance))

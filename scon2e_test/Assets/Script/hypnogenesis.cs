@@ -38,7 +38,6 @@ public class hypnogenesis : MonoBehaviour
         //催眠モーションが終わったら動ける
         if (hypn.stopflg == false)
         {
-            this.GetComponent<PlayerController>().enabled = true;
             hypnflg = false;
         }
 

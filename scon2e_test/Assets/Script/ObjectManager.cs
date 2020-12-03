@@ -9,6 +9,8 @@ public class ObjectManager : MonoBehaviour
     bool hide;
     bool activef;//オブジェクト表示フラグ
 
+    public int EnemyMax = 0;
+
     public int[] EnemyNumber = new int[20];
 
     void Start()
@@ -55,55 +57,55 @@ public class ObjectManager : MonoBehaviour
     }
     void SendHide()
     {
-        for (int i = 1; i < 7; i++)
+        for (int i = 1; i <= EnemyMax; i++)
         {
             switch (i)
             {
                 case 1:
                     GameObject refObj;
-                    refObj = GameObject.Find("Enemy1");
+                    refObj = GameObject.Find("Cop");
                     OnSearchView d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
                 case 2:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy2");
+                    refObj = GameObject.Find("Cop (1)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
                 case 3:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy3");
+                    refObj = GameObject.Find("Cop (2)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
                 case 4:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy4");
+                    refObj = GameObject.Find("Cop (3)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
                 case 5:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy5");
+                    refObj = GameObject.Find("Cop (4)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
                 case 6:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy6");
+                    refObj = GameObject.Find("Cop (5)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
                 case 7:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy7");
+                    refObj = GameObject.Find("Cop (6)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
                 case 8:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy8");
+                    refObj = GameObject.Find("Cop (7)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
@@ -114,55 +116,55 @@ public class ObjectManager : MonoBehaviour
     //ゴミ箱からでたのをお知らせ
     void SendHide2()
     {
-        for (int i = 1; i < 7; i++)
+        for (int i = 1; i <= EnemyMax; i++)
         {
             switch (/*EnemyNumber[i]*/i)
             {
                 case 1:
                     GameObject refObj;
-                    refObj = GameObject.Find("Enemy1");
+                    refObj = GameObject.Find("Cop");
                     OnSearchView d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;
                 case 2:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy2");
+                    refObj = GameObject.Find("Cop (1)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;
                 case 3:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy3");
+                    refObj = GameObject.Find("Cop (2)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;
                 case 4:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy4");
+                    refObj = GameObject.Find("Cop (3)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;
                 case 5:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy5");
+                    refObj = GameObject.Find("Cop (4)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;
                 case 6:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy6");
+                    refObj = GameObject.Find("Cop (5)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;
                 case 7:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy7");
+                    refObj = GameObject.Find("Cop (6)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;
                 case 8:
                     //GameObject refObj;
-                    refObj = GameObject.Find("Enemy8");
+                    refObj = GameObject.Find("Cop (7)");
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = false;
                     break;

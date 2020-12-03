@@ -422,10 +422,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 63b8082e539e63c4ebd1cb6c09f50f54,
-      type: 3}
+    m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 63b8082e539e63c4ebd1cb6c09f50f54, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -658,8 +657,8 @@ GameObject:
   - component: {fileID: 874115010}
   - component: {fileID: 874115009}
   - component: {fileID: 874115008}
-  - component: {fileID: 874115006}
   - component: {fileID: 874115007}
+  - component: {fileID: 874115006}
   m_Layer: 5
   m_Name: GameClearCanvas
   m_TagString: Untagged
@@ -676,7 +675,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 874115005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c733762d612884686c274402575062, type: 3}
+  m_Script: {fileID: 11500000, guid: 85423b9543c16a442a073fe449d61369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &874115007
@@ -688,7 +687,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 874115005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1ac77f676b5fc42ad59a02b3f3c19a, type: 3}
+  m_Script: {fileID: 11500000, guid: 08e371d41f8b664438e60cfbb38115c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &874115008

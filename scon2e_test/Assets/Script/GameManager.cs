@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
+//using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
-        if (SceneManager.GetActiveScene().name == "ProtStage")
+        if (SceneManager.GetActiveScene().name == "ProtoStage")
         {
             SceneManager.LoadScene("GameClear");
         }

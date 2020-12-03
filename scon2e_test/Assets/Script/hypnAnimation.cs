@@ -7,6 +7,9 @@ public class hypnAnimation : MonoBehaviour
     public hypnogenesis hypn;
     public int LoopCount;
     public bool stopflg;
+    public GameObject enemy_parent;
+    private GameObject enemy;
+
     Animator animator;
 
     // Start is called before the first frame update
@@ -25,6 +28,9 @@ public class hypnAnimation : MonoBehaviour
             animator.SetBool("hypnflg", false);
             //Debug.Log("停止");
             stopflg = false;
+            enemy = this.gameObject;
+            enemy_parent = enemy.transform.parent.gameObject;
+            enemy_parent.GetComponent<PlayerController>().enabled = true;
         }
         if (hypn.hypn_animation == true)
         {

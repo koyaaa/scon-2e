@@ -38,11 +38,13 @@ public class PlayerController : MonoBehaviour
     public bool ReverseKey;
     //true:ごみ箱に隠れてるfalse:隠れてない
     public bool hide;
+    public bool hide2 = false;
     //Camera camera;
     public float angleSpeed = 4.0f;
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         rB = GetComponent<Rigidbody>();
         //goalText.enabled = false;
         //goalButton.SetActive(false);
@@ -163,7 +165,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //ごみ箱に隠れる(BボタンかFキー)
-        if (hide == false && Input.GetButtonDown("Bbutton"))
+        if (hide == false && hide2 == false && Input.GetButtonDown("Bbutton"))
         {
             //Rayの発射地点の座標と発射する方向の設定
             Ray ray = new Ray(this.transform.position, this.transform.forward);
@@ -175,6 +177,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider.tag == "Gomibako")
                 {
                     hide = true;
+                    hide2 = true;
                     //gameObject.SetActive(false);
                     Debug.Log("隠れた");
 
@@ -193,6 +196,9 @@ public class PlayerController : MonoBehaviour
                 }
             }
             Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
+        }else if(hide == false && hide2 == true)
+        {
+            hide2 = true;
         }
     }
 
