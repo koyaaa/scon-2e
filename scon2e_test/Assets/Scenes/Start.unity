@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Start B Button
+  m_Text: 
 --- !u!222 &391346373
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -725,13 +725,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.83137256}
+  m_Color: {r: 1, g: 0.1462264, b: 0.1462264, a: 0.83137256}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8d6e2d2ea82e27e4990d3fd269807f18, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
