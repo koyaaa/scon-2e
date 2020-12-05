@@ -5,7 +5,15 @@ using UnityEngine.UI;
 
 public class WIDummy : MonoBehaviour
 {
-    public Image img; //アイコンイメージ
+    private RectTransform img; //アイコンイメージ
+
+    private GameObject SearchUI;
+
+    void Start()
+    {
+        SearchUI = transform.Find("SearechUI").gameObject;
+        img = SearchUI.transform.Find("Image").GetComponent<RectTransform>();
+    }
 
     void Update()
     {
@@ -13,13 +21,13 @@ public class WIDummy : MonoBehaviour
         Vector3 targetWorldPos = transform.position + Vector3.up * 1.5f;
 
         Vector3 scrPos = calcAnchor(targetWorldPos);
-        img.rectTransform.anchorMin = scrPos;
-        img.rectTransform.anchorMax = scrPos;
+        img.anchorMin = scrPos;
+        img.anchorMax = scrPos;
     }
 
     private Vector2 calcAnchor(Vector3 targetPos)
     {
-        Debug.Log("aaab");
+       // Debug.Log("aaab");
         Vector3 anchor = Camera.main.WorldToViewportPoint(targetPos);
         if ((0 < anchor.z) && (0 <= anchor.x) && (anchor.x <= 1) &&
             (0 <= anchor.y) && (anchor.y <= 1))
