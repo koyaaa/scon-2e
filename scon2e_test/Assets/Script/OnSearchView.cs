@@ -159,7 +159,6 @@ public class OnSearchView : MonoBehaviour
         }
         else
         {
-            Debug.Log("ui");
             UI_uzu.SetActive(false);
         }
 

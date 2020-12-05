@@ -100,7 +100,7 @@ public class hypnogenesis : MonoBehaviour
         if (onSearch.hypnflg == true)
         {
             onSearch.uzumetor = ((float)Time.time - save_time) / (float)stop_time;
-            Debug.Log(onSearch.uzumetor);            
+            //Debug.Log(onSearch.uzumetor);            
         }
     }
 }

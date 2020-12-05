@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Following : MonoBehaviour
 {
-    public float distance = 1.7f;
+    private float distance = 1.7f;
     private GameObject player;
     NavMeshAgent agent;
 
