@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press Start
+  m_Text: Start B Button
 --- !u!222 &391346373
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 107f7189f97bf3f4bb5b18aa80343e18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f01d924f8cffec42afc00fa5072c202, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

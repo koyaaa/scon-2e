@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
-	public void OnStartButtonClicked()
+	void Update()
 	{
-		SceneManager.LoadScene("ProtoStage");
+		if (Input.GetKeyDown("joystick button 1"))
+		{
+			SceneManager.LoadScene("ProtoStage");
+		}
 	}
 }
