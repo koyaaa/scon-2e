@@ -48,10 +48,19 @@ public class OnSearchView : MonoBehaviour
     //　SearchUI表示用
     //[SerializeField]
     private GameObject SearchUI;
+    private GameObject UI_key;
+    private GameObject UI_uzu;
     //　?マーク表示用
-    private Image Deimage;
+    private Image Deimage;   
     //見付けた場合true
     private bool De = false;
+    //鍵マーク
+    private Image keyimage;
+    public bool keyflg = false;
+    //渦
+    private Image uzu2;
+    public bool uzuflg = false;
+    public float uzumetor;
 
     void Start()
     {
@@ -61,8 +70,12 @@ public class OnSearchView : MonoBehaviour
         objectManager = Obj.GetComponent<ObjectManager>();
         soundManager = soundObj.GetComponent<Sound>();
         agent = GetComponent<NavMeshAgent>();
-        SearchUI =  transform.FindChild("SearechUI/Image").gameObject;
+        SearchUI =  transform.Find("SearechUI/Image").gameObject;
+        UI_key = transform.Find("SearechUI/kagi").gameObject;
         Deimage = SearchUI.transform.Find("DeImage").GetComponent<Image>();
+        UI_uzu = transform.Find("SearechUI/uzu2").gameObject;
+        uzu2 = UI_uzu.transform.Find("uzu").GetComponent<Image>();
+        UI_uzu.SetActive(false);
         SearchUI.SetActive(false);
     }
 
@@ -118,11 +131,36 @@ public class OnSearchView : MonoBehaviour
         if (De == true)
         {
             SearchUI.SetActive(true);
+            UI_key.SetActive(false);
             //Deimage.fillAmount = 0f;
             Deimage.fillAmount = 1.0f  - ((float)(Time.time - SaveTime) / (float)itime);
         }else if(De == false)
         {
+
             SearchUI.SetActive(false);
+            if (this.gameObject.tag == "Enemy_Key" && keyflg == false)
+            {
+                UI_key.SetActive(true);
+            }
+            else
+            {
+                UI_key.SetActive(false);
+            }
+        }
+
+        if(uzuflg == true)
+        {
+            UI_uzu.SetActive(true);
+            if (this.gameObject.tag == "Enemy")
+            {
+                uzu2.fillAmount = 1.0f - uzumetor;
+            }
+            //Debug.Log(uzumetor);
+        }
+        else
+        {
+            Debug.Log("ui");
+            UI_uzu.SetActive(false);
         }
 
     }

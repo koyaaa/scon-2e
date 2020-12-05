@@ -9,10 +9,15 @@ public class WIDummy : MonoBehaviour
 
     private GameObject SearchUI;
 
+    private RectTransform kagi;
+    private RectTransform uzu;
+
     void Start()
     {
         SearchUI = transform.Find("SearechUI").gameObject;
         img = SearchUI.transform.Find("Image").GetComponent<RectTransform>();
+        uzu = SearchUI.transform.Find("uzu2").GetComponent<RectTransform>();
+        kagi = SearchUI.transform.Find("kagi").GetComponent<RectTransform>();
     }
 
     void Update()
@@ -23,6 +28,14 @@ public class WIDummy : MonoBehaviour
         Vector3 scrPos = calcAnchor(targetWorldPos);
         img.anchorMin = scrPos;
         img.anchorMax = scrPos;
+
+        Vector3 scrPos2 = calcAnchor(targetWorldPos);
+        kagi.anchorMin = scrPos2;
+        kagi.anchorMax = scrPos2;
+
+        Vector3 scrPos3 = calcAnchor(targetWorldPos);
+        uzu.anchorMin = scrPos3;
+        uzu.anchorMax = scrPos3;
     }
 
     private Vector2 calcAnchor(Vector3 targetPos)

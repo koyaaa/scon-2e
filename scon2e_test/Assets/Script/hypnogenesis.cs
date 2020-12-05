@@ -22,7 +22,6 @@ public class hypnogenesis : MonoBehaviour
     public GameObject soundObj;
     public Sound soundManager;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +67,8 @@ public class hypnogenesis : MonoBehaviour
                     enemy = hit.collider.gameObject;
                     enemy_parent = enemy.transform.parent.gameObject;
                     onSearch = enemy_parent.GetComponent<OnSearchView>();
-                    if (enemy_parent.GetComponent<Renderer>().material.color != onSearch.yellowColor && onSearch.WANING == false) {
+                    if (enemy_parent.GetComponent<Renderer>().material.color != onSearch.yellowColor && onSearch.WANING == false
+                        && onSearch.hypnflg == false) {
                         //ヒットした敵の索敵諸々のコンポーネントの停止
                         enemy_parent.GetComponent<NavMeshAgent>().enabled = false;
                         enemy_parent.GetComponent<WalkAround>().enabled = false;
@@ -76,19 +76,31 @@ public class hypnogenesis : MonoBehaviour
                         save_time = Time.time;
                         onSearch.hypnflg = true;
                     }
+                    //鍵を持ってる敵だったら
+                    if (enemy_parent.gameObject.tag == "Enemy_Key")
+                    {
+                        onSearch.keyflg = true;
+                        enemy_parent.GetComponent<NavMeshAgent>().enabled = true;
+                    }
+                    onSearch.uzuflg = true;
                 }
             }
             hypnflg = true;
             Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
         }
         //敵が機能停止してから時間が経ったら機能再開
-        if (stop_time < Time.time - save_time && onSearch.hypnflg == true)
+        if (stop_time < Time.time - save_time && onSearch.hypnflg == true && enemy_parent.gameObject.tag != "Enemy_Key")
         {
             enemy_parent.GetComponent<NavMeshAgent>().enabled = true;
             enemy_parent.GetComponent<WalkAround>().enabled = true;
             enemy_parent.GetComponent<Renderer>().material.color = defaultColor;
             onSearch.hypnflg = false;
+            onSearch.uzuflg = false;
         }
-
+        if (onSearch.hypnflg == true)
+        {
+            onSearch.uzumetor = ((float)Time.time - save_time) / (float)stop_time;
+            Debug.Log(onSearch.uzumetor);            
+        }
     }
 }
