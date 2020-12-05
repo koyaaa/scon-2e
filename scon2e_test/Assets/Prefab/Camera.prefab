@@ -91,8 +91,8 @@ MonoBehaviour:
   CameraDistance: 2
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
-  IgnoreTag: Enemy
+    m_Bits: 0
+  IgnoreTag: 
   CameraRadius: 0.2
 --- !u!1 &1837593365918853822
 GameObject:
@@ -185,8 +185,8 @@ MonoBehaviour:
   CameraDistance: 2
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
-  IgnoreTag: Enemy
+    m_Bits: 0
+  IgnoreTag: 
   CameraRadius: 0.2
 --- !u!1 &1837593366043577758
 GameObject:
@@ -432,8 +432,8 @@ MonoBehaviour:
   CameraDistance: 2
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
-  IgnoreTag: Enemy
+    m_Bits: 0
+  IgnoreTag: 
   CameraRadius: 0.2
 --- !u!1 &1837593366709594701
 GameObject:
@@ -526,8 +526,8 @@ MonoBehaviour:
   CameraDistance: 2
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
-  IgnoreTag: Enemy
+    m_Bits: 0
+  IgnoreTag: 
   CameraRadius: 0.2
 --- !u!1 &1837593366891441480
 GameObject:
