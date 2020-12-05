@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class OnSearchView : MonoBehaviour
 {
-
     public event System.Action<GameObject> onFound = (obj) => { };
     public event System.Action<GameObject> onLost = (obj) => { };
 
@@ -20,9 +19,12 @@ public class OnSearchView : MonoBehaviour
 
     public Color redColor;
     public Color yellowColor;
-    
+
     //探す時間
-    public float itime = 1.0f;
+    private float itime = 1.0f;
+    public float max_itime = 3.0f;
+    public float min_itime = 1.0f;
+
 
     private float SaveTime;
 
@@ -62,6 +64,10 @@ public class OnSearchView : MonoBehaviour
     public bool uzuflg = false;
     public float uzumetor;
 
+    //見つかる時間の距離
+    private float distance;
+    private GameObject target;
+
     void Start()
     {
 
@@ -77,6 +83,7 @@ public class OnSearchView : MonoBehaviour
         uzu2 = UI_uzu.transform.Find("uzu").GetComponent<Image>();
         UI_uzu.SetActive(false);
         SearchUI.SetActive(false);
+        target = GameObject.Find("Player");
     }
 
     public float SearchAngle
@@ -229,9 +236,18 @@ public class OnSearchView : MonoBehaviour
                     GetComponent<NavMeshAgent>().isStopped = true;
 
                     SaveTime = Time.time;
-                    //Debug.Log("更新　" + SaveTime);
-                    //WANING = false;
-
+                //Debug.Log("更新　" + SaveTime);
+                //WANING = false;
+                //距離を計算
+                distance = Vector3.Distance(this.transform.position, target.transform.position);
+                distance -= 0.23f;
+                float range_rate = distance / GetComponent<SphereCollider>().radius;               
+                itime = max_itime * range_rate;
+                if(itime < min_itime)
+                {
+                    itime = min_itime;
+                }
+                //Debug.Log(itime);
             }
 
             else if (foundData.IsLost() && WANING == false)
@@ -308,11 +324,7 @@ public class OnSearchView : MonoBehaviour
                     }
                 }
             }
-
-            
-
         }
-      
     }
 
     private bool CheckFoundObject(GameObject i_target)
