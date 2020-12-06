@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectManager : MonoBehaviour
 {
     public PlayerController playerController;
+    private GameObject Chest;
     public GameObject Player;
     bool hide;
     bool activef;//オブジェクト表示フラグ
@@ -17,6 +18,7 @@ public class ObjectManager : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         EnemyNumber[0] = -99;
+        Chest = GameObject.Find("Chest_A");
     }
 
     void Update()
@@ -32,12 +34,14 @@ public class ObjectManager : MonoBehaviour
             return;
         }
         //ごみ箱から出る(BボタンかFキー)
-        if (hide == true && Input.GetButtonDown("Bbutton"))
+        if (hide == true && Input.GetButtonDown("Bbutton")
+            && Chest.GetComponent<ChestController>().chestflg == true)
         {
+            Chest.GetComponent<ChestController>().chestflg = false;
             hide = false;
             activef = false;
             Player.tag = "Player";
-            Player.GetComponent<PlayerController>().enabled = true;
+            //Player.GetComponent<PlayerController>().enabled = true;
             playerController.hide = false;
             SendHide2();
 

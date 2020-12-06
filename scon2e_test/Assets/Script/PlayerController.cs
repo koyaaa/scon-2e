@@ -198,7 +198,8 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
         }else if(hide == false && hide2 == true)
         {
-            hide2 = true;
+            //hide2 = true;
+            hide2 = false;
         }
     }
 
