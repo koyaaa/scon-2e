@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ChestController : MonoBehaviour
 {
@@ -26,11 +27,15 @@ public class ChestController : MonoBehaviour
     private float time;
     private bool hideexit_flg;
     private bool openflg = false;
-    private bool stopflg = false; 
+    private bool stopflg = false;
+
+    public CinemachineVirtualCamera Hidecamera;
+    private CinemachineComposer _composerHide;
 
     // Start is called before the first frame update
     void Start()
     {
+        _composerHide = Hidecamera.GetCinemachineComponent<CinemachineComposer>();
         Player = GameObject.Find("Player");
         player = Player.GetComponent<PlayerController>();
         exitpos = GameObject.Find("exitpos");
@@ -127,6 +132,7 @@ public class ChestController : MonoBehaviour
                 if (time < 1f && time > 0.25f && stopflg == true)
                 {
                     //箱に隠れている
+                    Hidecamera.Priority = 80;
 
                     chestflg = true;
                     animator.speed = 0f;
@@ -138,6 +144,7 @@ public class ChestController : MonoBehaviour
                     animator.speed = 1f;
                     openflg = false;
                     state = 5;
+                    Hidecamera.Priority = 10;
                     Vector3 pos4 = exitpos.transform.position;
                     pos4.y = pos.y;
                     //目的地と自分の位置との距離
