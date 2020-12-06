@@ -8,6 +8,6 @@ public class GameStart : MonoBehaviour
 {
     public void OnStartButtonClicked()
     {
-        SceneManager.LoadScene("ProtStage");
+        SceneManager.LoadScene("ProtoStage");
     }
 }
