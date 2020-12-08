@@ -1837,7 +1837,8 @@ MonoBehaviour:
   m_searchAngle: 214
   redColor: {r: 1, g: 0, b: 0, a: 0}
   yellowColor: {r: 1, g: 0.90713394, b: 0, a: 0}
-  itime: 1
+  max_itime: 3
+  min_itime: 1
   WANING: 0
   EnemyNumber: 0
   Obj: {fileID: 0}
@@ -1922,10 +1923,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6309681733104343421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5078d25ca0b7c54b82c0dcfbb289a66, type: 3}
+  m_Script: {fileID: 11500000, guid: 93806f24cc444b34cb580dea718e1b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0
 --- !u!1 &6377541585970858258
 GameObject:
   m_ObjectHideFlags: 0
