@@ -22,22 +22,48 @@ public class hypnogenesis : MonoBehaviour
     public GameObject soundObj;
     public Sound soundManager;
 
+    private float m_MaxDistance;
+    private float m_Speed;
+    private bool m_HitDetect;
+    private bool hitflg;
+
+    Collider m_Collider;
+    RaycastHit m_Hit;
+    LayerMask mask;
+
     // Start is called before the first frame update
     void Start()
     {
         rB = GetComponent<Rigidbody>();
         soundObj = GameObject.Find("Soundmanager");
         soundManager = soundObj.GetComponent<Sound>();
-
+        //nullエラー出るから適当に入れる
+        enemy_parent = GameObject.Find("Cop");
+        enemy = GameObject.Find("Cop");
+        m_MaxDistance = 300.0f;
+        m_Speed = 20.0f;
+        m_Collider = GetComponent<Collider>();
+        mask = LayerMask.GetMask("Search");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //催眠モーションが終わったら動ける
-        if (hypn.stopflg == false)
+        m_HitDetect = Physics.BoxCast(m_Collider.bounds.center, transform.localScale, transform.forward, out m_Hit, transform.rotation, ray_distance);
+   
+        //RayBoxが敵にヒット
+        if (m_HitDetect && m_Hit.collider.tag == "EnemyHit")
         {
-            hypnflg = false;
+            hitflg = true;
+            enemy = m_Hit.collider.gameObject;
+            enemy_parent = enemy.transform.parent.gameObject;
+        }
+        //RayBoxの出る場所の判定
+        Collider[] hitColliders = Physics.OverlapBox(this.transform.position, this.transform.localScale, transform.rotation, mask);
+        if (hitColliders.Length > 0)
+        {
+            hitflg = true;
+            enemy = hitColliders[0].gameObject;
         }
 
         //催眠する(XボタンかEキー)
@@ -54,39 +80,36 @@ public class hypnogenesis : MonoBehaviour
             save_time2 = Time.time;
             //催眠エフェクトフラグ
             hypn_animation = true;
-            //Rayの発射地点の座標と発射する方向の設定
-            Ray ray = new Ray(this.transform.position, this.transform.forward);
-            RaycastHit hit;
-            //Rayがヒットしたら
-            if (Physics.Raycast(ray, out hit, ray_distance))
+
+            if(hitflg == true)
             {
-                //敵がヒット&&敵の色が赤でも黄色でもない
-                if (hit.collider.tag == "EnemyHit" /*&& onSearch.WANING == false*/
-                    /*&& hit.collider.GetComponent<Renderer>().material.color != onSearch.yellowColor*/)
+                onSearch = enemy_parent.GetComponent<OnSearchView>();
+                if (enemy_parent.GetComponent<Renderer>().material.color != onSearch.yellowColor && onSearch.WANING == false
+                    && onSearch.hypnflg == false)
                 {
-                    enemy = hit.collider.gameObject;
-                    enemy_parent = enemy.transform.parent.gameObject;
-                    onSearch = enemy_parent.GetComponent<OnSearchView>();
-                    if (enemy_parent.GetComponent<Renderer>().material.color != onSearch.yellowColor && onSearch.WANING == false
-                        && onSearch.hypnflg == false) {
-                        //ヒットした敵の索敵諸々のコンポーネントの停止
-                        enemy_parent.GetComponent<NavMeshAgent>().enabled = false;
-                        enemy_parent.GetComponent<WalkAround>().enabled = false;
-                        enemy_parent.GetComponent<Renderer>().material.color = blueColor;
-                        save_time = Time.time;
-                        onSearch.hypnflg = true;
-                    }
-                    //鍵を持ってる敵だったら
-                    if (enemy_parent.gameObject.tag == "Enemy_Key")
-                    {
-                        onSearch.keyflg = true;
-                        enemy_parent.GetComponent<NavMeshAgent>().enabled = true;
-                    }
-                    onSearch.uzuflg = true;
+                    //ヒットした敵の索敵諸々のコンポーネントの停止
+                    enemy_parent.GetComponent<NavMeshAgent>().enabled = false;
+                    enemy_parent.GetComponent<WalkAround>().enabled = false;
+                    enemy_parent.GetComponent<Renderer>().material.color = blueColor;
+                    save_time = Time.time;
+                    onSearch.hypnflg = true;
                 }
+                //鍵を持ってる敵だったら
+                if (enemy_parent.gameObject.tag == "Enemy_Key")
+                {
+                    onSearch.keyflg = true;
+                    enemy_parent.GetComponent<NavMeshAgent>().enabled = true;
+                }
+                hitflg = false;
             }
+            onSearch.uzuflg = true;
             hypnflg = true;
-            Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
+        }
+
+        //催眠モーションが終わったら動ける
+        if (hypn.stopflg == false)
+        {
+            hypnflg = false;
         }
         //敵が機能停止してから時間が経ったら機能再開
         if (stop_time < Time.time - save_time && onSearch.hypnflg == true && enemy_parent.gameObject.tag != "Enemy_Key")
@@ -102,5 +125,30 @@ public class hypnogenesis : MonoBehaviour
             onSearch.uzumetor = ((float)Time.time - save_time) / (float)stop_time;
             //Debug.Log(onSearch.uzumetor);            
         }
+    }
+
+    //sceneviewでrayboxを表示
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        //Check if there has been a hit yet
+        if (m_HitDetect)
+        {
+            //Draw a Ray forward from GameObject toward the hit
+            Gizmos.DrawRay(transform.position, transform.forward * m_Hit.distance);
+            //Draw a cube that extends to where the hit exists
+            Gizmos.DrawWireCube(transform.position + transform.forward * m_Hit.distance, transform.localScale);
+        }
+        //If there hasn't been a hit yet, draw the ray at the maximum distance
+        else
+        {
+            //Draw a Ray forward from GameObject toward the maximum distance
+            Gizmos.DrawRay(transform.position, transform.forward * ray_distance);
+            //Draw a cube at the maximum distance
+            Gizmos.DrawWireCube(transform.position + transform.forward * ray_distance, transform.localScale);
+        }
+        //Physics.CheckBox
+        Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 }
