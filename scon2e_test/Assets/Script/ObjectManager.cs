@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObjectManager : MonoBehaviour
 {
     public PlayerController playerController;
-    private GameObject Chest;
     public GameObject Player;
     bool hide;
     bool activef;//オブジェクト表示フラグ
@@ -18,7 +17,6 @@ public class ObjectManager : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         EnemyNumber[0] = -99;
-        Chest = GameObject.Find("Chest_A");
     }
 
     void Update()
@@ -35,28 +33,32 @@ public class ObjectManager : MonoBehaviour
         }
         //ごみ箱から出る(BボタンかFキー)
         if (hide == true && Input.GetButtonDown("Bbutton")
-            && Chest.GetComponent<ChestController>().chestflg == true)
+            /*&& Chest.GetComponent<ChestController>().chestflg == true*/)
         {
-            Chest.GetComponent<ChestController>().chestflg = false;
-            hide = false;
-            activef = false;
-            Player.tag = "Player";
-            //Player.GetComponent<PlayerController>().enabled = true;
-            playerController.hide = false;
-            SendHide2();
+            GameObject ch = playerController.Chest;
+            if (ch.GetComponent<ChestController>().chestflg == true)
+            {
+                ch.GetComponent<ChestController>().chestflg = false;
+                hide = false;
+                activef = false;
+                Player.tag = "Player";
+                //Player.GetComponent<PlayerController>().enabled = true;
+                playerController.hide = false;
+                SendHide2();
 
-            Color color = Player.gameObject.GetComponent<Renderer>().material.color;
-            color.a = 1.0f;
-            Player.gameObject.GetComponent<Renderer>().material.color = color;
+                Color color = Player.gameObject.GetComponent<Renderer>().material.color;
+                color.a = 1.0f;
+                Player.gameObject.GetComponent<Renderer>().material.color = color;
 
 
 
-            Color color2 = Player.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color;
-            color2.a = 1.0f;
-            Player.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = color2;
+                Color color2 = Player.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color;
+                color2.a = 1.0f;
+                Player.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = color2;
 
-            // Player.SetActive(true);
-            Debug.Log("出た");
+                // Player.SetActive(true);
+                Debug.Log("出た");
+            }
         }
     }
     void SendHide()

@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
     //Camera camera;
     public float angleSpeed = 4.0f;
 
+    //隠れたチェスト
+    public GameObject Chest;
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -193,6 +196,9 @@ public class PlayerController : MonoBehaviour
                     GetComponent<PlayerController>().enabled = false;
                     rB.velocity = Vector3.zero;
                     rB.angularVelocity = Vector3.zero;
+
+                    Chest = hit.collider.gameObject;
+                    Chest.GetComponent<ChestController>().hideflg = true;
                 }
             }
             Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);

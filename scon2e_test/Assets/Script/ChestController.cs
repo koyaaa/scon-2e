@@ -14,6 +14,7 @@ public class ChestController : MonoBehaviour
     public float settime = 1.0f;
     private float CloseTime;
     public bool chestflg;
+    public bool hideflg;
 
     //hideanime変数
     private float upward = 0.03f;   
@@ -38,19 +39,19 @@ public class ChestController : MonoBehaviour
         _composerHide = Hidecamera.GetCinemachineComponent<CinemachineComposer>();
         Player = GameObject.Find("Player");
         player = Player.GetComponent<PlayerController>();
-        exitpos = GameObject.Find("exitpos");
+        exitpos = transform.Find("exitpos").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.hide == true)
+        if (hideflg == true)
         {
             animator.SetBool("Open", true);
             hideanime();
             hideexit_flg = true;
         }
-        if(hideexit_flg == true && player.hide == false)
+        if(hideexit_flg == true && hideflg == false)
         {
             hideanime();
         }
@@ -151,6 +152,7 @@ public class ChestController : MonoBehaviour
                     Vector3 dir = pos4 - pos;
                     //目的地の方を向く
                     Player.transform.rotation = Quaternion.LookRotation(dir);
+                    hideflg = false;
                 }
                 break;
             //箱が開いて上に行く
@@ -197,6 +199,7 @@ public class ChestController : MonoBehaviour
                     upward_volume = 0;
                     Player.GetComponent<PlayerController>().enabled = true;
                 }
+                
                 break;
 
         }
