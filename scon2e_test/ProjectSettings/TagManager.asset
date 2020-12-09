@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - Player Hit
   - Enemy_Key
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Wall
   - Ground
   - OutWall
-  - 
+  - Door
   - 
   - 
   - 
