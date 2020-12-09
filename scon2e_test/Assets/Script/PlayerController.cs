@@ -248,7 +248,8 @@ public class PlayerController : MonoBehaviour
                     door = hitColliders[0].gameObject;
                 }*/
                 door = hit2.collider.gameObject;
-                animator = door.GetComponent<Animator>();
+                GameObject door_oya = door.transform.parent.gameObject;
+                animator = door_oya.GetComponent<Animator>();
                 if (doorflg == false)
                 { 
                     animator.SetBool("Open", true);
