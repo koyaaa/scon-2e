@@ -68,6 +68,9 @@ public class OnSearchView : MonoBehaviour
     private float distance;
     private GameObject target;
 
+    //催眠できる判定
+    public bool hypnflg2;
+
     void Start()
     {
 
@@ -141,7 +144,10 @@ public class OnSearchView : MonoBehaviour
             UI_key.SetActive(false);
             //Deimage.fillAmount = 0f;
             Deimage.fillAmount = 1.0f  - ((float)(Time.time - SaveTime) / (float)itime);
-        }else if(De == false)
+
+            hypnflg2 = true;
+        }
+        else if(De == false)
         {
 
             SearchUI.SetActive(false);
@@ -153,6 +159,7 @@ public class OnSearchView : MonoBehaviour
             {
                 UI_key.SetActive(false);
             }
+            hypnflg2 = false;
         }
 
         if(uzuflg == true)

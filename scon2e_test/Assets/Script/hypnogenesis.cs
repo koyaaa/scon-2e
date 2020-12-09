@@ -63,7 +63,6 @@ public class hypnogenesis : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapBox(this.transform.position, this.transform.localScale, transform.rotation, mask);
         if (m_HitDetect || hitColliders.Length > 0)
         {
-            hitflg = true;
             if (m_HitDetect)
             {
                 enemy = m_Hit.collider.gameObject;
@@ -71,6 +70,11 @@ public class hypnogenesis : MonoBehaviour
             else
             {
                 enemy = hitColliders[0].gameObject;
+            }
+            onSearch = enemy.GetComponent<OnSearchView>();
+            if (onSearch.hypnflg2 == false)
+            {
+                hitflg = true;
             }
         }
         else
@@ -121,8 +125,8 @@ public class hypnogenesis : MonoBehaviour
                     enemy.GetComponent<NavMeshAgent>().enabled = true;
                 }
                 hitflg = false;
+                onSearch.uzuflg = true;
             }
-            onSearch.uzuflg = true;
             hypnflg = true;
         }
 
