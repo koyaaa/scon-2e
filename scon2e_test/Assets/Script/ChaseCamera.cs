@@ -31,6 +31,10 @@ public class ChaseCamera : MonoBehaviour
     //true は右
     private bool CameraLR = true;
 
+    //イラスト
+    private GameObject Action;
+    private RectTransform X;
+
     // Use this for initialization
     void Start()
     {
@@ -38,12 +42,14 @@ public class ChaseCamera : MonoBehaviour
         _composerR2 = Rcamera2.GetCinemachineComponent<CinemachineComposer>();
         _composerL = Lcamera.GetCinemachineComponent<CinemachineComposer>();
         _composerL2 = Lcamera2.GetCinemachineComponent<CinemachineComposer>();
+
+        Action = GameObject.Find("ActionUI");
+        X = Action.transform.Find("BackG").GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         //回転させる角度
         float angle = Input.GetAxis("CameraX") * (-rotateSpeed);
 
@@ -82,12 +88,18 @@ public class ChaseCamera : MonoBehaviour
                 Rcamera.Priority = 10;
                 Lcamera.Priority = 73;
                 CameraLR = false;
+
+                //Debug.Log("押されたよ");-84
+                Vector2 v1 = new Vector2(-54f, -144f);
+                X.anchoredPosition = v1;
             }
             else
             {
                 Rcamera.Priority = 73;
                 Lcamera.Priority = 10;
                 CameraLR = true;
+                Vector2 v1 = new Vector2(64f, -144f);
+                X.anchoredPosition = v1;
             }
         }
         //else if (tri > 0)
