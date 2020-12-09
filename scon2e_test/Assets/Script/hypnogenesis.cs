@@ -8,6 +8,7 @@ public class hypnogenesis : MonoBehaviour
 {
     public OnSearchView onSearch;
     public hypnAnimation hypn;
+    private PlayerController player;
 
     public float ray_distance;
     public float stop_time;
@@ -35,6 +36,8 @@ public class hypnogenesis : MonoBehaviour
     private GameObject Action;
     private GameObject X;
 
+    public bool chesthypn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +55,8 @@ public class hypnogenesis : MonoBehaviour
         Action = GameObject.Find("ActionUI");
         X = Action.transform.Find("BackG").gameObject;
         X.SetActive(false);
+
+        player = this.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -91,7 +96,7 @@ public class hypnogenesis : MonoBehaviour
         }
 
         //催眠する(XボタンかEキー)
-        if (Input.GetButtonDown("Xbutton") && hypnflg == false)
+        if (Input.GetButtonDown("Xbutton") && hypnflg == false && chesthypn == false)
         {
             //催眠音
             soundManager.HypnoSEflag = true;

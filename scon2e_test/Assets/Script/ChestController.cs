@@ -9,6 +9,7 @@ public class ChestController : MonoBehaviour
     private PlayerController player;
     private GameObject Player;
     private GameObject exitpos;
+    private hypnogenesis hypn;
 
     public bool Close = false;
     public float settime = 1.0f;
@@ -26,7 +27,7 @@ public class ChestController : MonoBehaviour
     private float zmove;
     private bool moveflg;
     private float time;
-    private bool hideexit_flg;
+    public bool hideexit_flg;
     private bool openflg = false;
     private bool stopflg = false;
 
@@ -39,6 +40,7 @@ public class ChestController : MonoBehaviour
         _composerHide = Hidecamera.GetCinemachineComponent<CinemachineComposer>();
         Player = GameObject.Find("Player");
         player = Player.GetComponent<PlayerController>();
+        hypn = Player.GetComponent<hypnogenesis>();
         exitpos = transform.Find("exitpos").gameObject;
     }
 
@@ -47,6 +49,7 @@ public class ChestController : MonoBehaviour
     {
         if (hideflg == true)
         {
+            hypn.chesthypn = true;
             animator.SetBool("Open", true);
             hideanime();
             hideexit_flg = true;
@@ -198,10 +201,9 @@ public class ChestController : MonoBehaviour
                     state = 1;
                     upward_volume = 0;
                     Player.GetComponent<PlayerController>().enabled = true;
-                }
-                
+                    hypn.chesthypn = false;
+                }             
                 break;
-
         }
     }
 }
