@@ -136,7 +136,7 @@ public class ChestController : MonoBehaviour
                 if (time < 1f && time > 0.25f && stopflg == true)
                 {
                     //箱に隠れている
-                    Hidecamera.Priority = 80;
+                    Hidecamera.Priority = 125;
 
                     chestflg = true;
                     animator.speed = 0f;
