@@ -1853,6 +1853,7 @@ MonoBehaviour:
   keyflg: 0
   uzuflg: 0
   uzumetor: 0
+  hypnflg2: 0
 --- !u!114 &839391403399496507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1923,7 +1924,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6309681733104343421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93806f24cc444b34cb580dea718e1b30, type: 3}
+  m_Script: {fileID: 11500000, guid: 627117ec65015d9469b3ca35f50734e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6377541585970858258
