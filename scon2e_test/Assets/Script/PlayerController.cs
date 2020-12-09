@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 12.0f;
     public float brake = 0.5f;
+    private Animator animator;
     private Rigidbody rB;
     private Vector3 rbVelo;
 
@@ -45,6 +46,17 @@ public class PlayerController : MonoBehaviour
     //隠れたチェスト
     public GameObject Chest;
 
+    private float m_MaxDistance;
+    private float m_Speed;
+    private bool m_HitDetect;
+
+    Collider m_Collider;
+    RaycastHit m_Hit;
+    LayerMask mask;
+
+    private bool doorflg;
+    private GameObject door;
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -55,9 +67,14 @@ public class PlayerController : MonoBehaviour
         //failText.enabled = false;
         //failButton.SetActive(false);
         hide = false;
-       // ReverseKey = false;
+        // ReverseKey = false;
 
-       // Debug.Log("button0");
+        // Debug.Log("button0");
+
+        m_MaxDistance = 3f;
+        m_Speed = 20.0f;
+        m_Collider = GetComponent<Collider>();
+        mask = LayerMask.GetMask("Door");
     }
 
     //void Update()
@@ -202,13 +219,49 @@ public class PlayerController : MonoBehaviour
                 }
             }
             Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
-        }else if(hide == false && hide2 == true)
+        }
+        else if (hide == false && hide2 == true)
         {
             //hide2 = true;
             hide2 = false;
         }
-    }
 
+        //ドアを開ける
+        if (Input.GetButtonDown("Bbutton"))
+        {
+            //m_HitDetect = Physics.BoxCast(m_Collider.bounds.center, transform.localScale / 2, transform.forward, out m_Hit, transform.rotation, ray_distance, mask);
+            //Collider[] hitColliders = Physics.OverlapBox(this.transform.position, this.transform.localScale, transform.rotation, mask);
+            //if (m_HitDetect || hitColliders.Length > 0)
+            //{
+
+            //Rayの発射地点の座標と発射する方向の設定
+            Ray ray2 = new Ray(this.transform.position, this.transform.forward);
+            RaycastHit hit2;
+
+            if (Physics.Raycast(ray2, out hit2, 2.0f, mask)){
+                /*if (m_HitDetect)
+                {
+                    door = m_Hit.collider.gameObject;
+                }
+                else
+                {
+                    door = hitColliders[0].gameObject;
+                }*/
+                door = hit2.collider.gameObject;
+                animator = door.GetComponent<Animator>();
+                if (doorflg == false)
+                { 
+                    animator.SetBool("Open", true);
+                    doorflg = true;
+                }
+                else
+                {
+                    animator.SetBool("Open", false);
+                    doorflg = false;
+                }
+            }
+        }
+    }
     /*//プレイヤー前方のボックスコライダー
     void OnTriggerStay(Collider other)
     {
