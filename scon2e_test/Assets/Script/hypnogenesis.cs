@@ -77,7 +77,7 @@ public class hypnogenesis : MonoBehaviour
                 enemy = hitColliders[0].gameObject;
             }
             onSearch = enemy.GetComponent<OnSearchView>();
-            if (onSearch.hypnflg2 == false)
+            if (onSearch.hypnflg2 == false && onSearch.hypnflg == false)
             {
                 hitflg = true;
             }
