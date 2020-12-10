@@ -19,12 +19,19 @@ public class GateController : MonoBehaviour
 
     private float SaveTime = 0f;
 
+    public bool soundEnter = true;
+
+    public GameObject soundObj;
+    public Sound soundManager;
 
     // Start is called before the first frame update
     void Start()
     {
         GoalAICollider = GameObject.Find("GoalAICollider");
         goalai = GoalAICollider.GetComponent<GoalAI>();
+
+        soundObj = GameObject.Find("Soundmanager");
+        soundManager = soundObj.GetComponent<Sound>();
     }
 
     // Update is called once per frame
@@ -38,7 +45,13 @@ public class GateController : MonoBehaviour
 
         if (!OneEnter)
         {
-            //表示時間が2秒を超えたらオフにする
+            if (soundEnter && SaveTime + ViewTime - 2.0f < Time.time)
+            {
+                soundManager.GateSEflag = true;
+                soundEnter = false;
+            }
+
+            //
             if (SaveTime + ViewTime < Time.time)
             {
                 Open = true;
@@ -48,6 +61,9 @@ public class GateController : MonoBehaviour
 
         if (Open)
         {
+
+            
+
             // transformを取得
             Transform myTransform = this.transform;
 
@@ -60,6 +76,8 @@ public class GateController : MonoBehaviour
             }
 
             myTransform.position = pos;  // 座標を設定
+
+            
         }
 
        

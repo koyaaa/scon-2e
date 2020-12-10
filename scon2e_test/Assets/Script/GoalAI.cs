@@ -8,10 +8,12 @@ public class GoalAI : MonoBehaviour
     public OnSearchView onSearch;
 
     public bool LockEnter = false;
+    
 
     void Start()
     {
         onSearch = KeyCop.GetComponent<OnSearchView>();
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -19,6 +21,7 @@ public class GoalAI : MonoBehaviour
         if (onSearch.keyflg)
         {
             LockEnter = true;
+            
         }
     }
 }

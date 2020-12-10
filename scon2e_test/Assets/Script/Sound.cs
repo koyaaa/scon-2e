@@ -19,6 +19,9 @@ public class Sound : MonoBehaviour
     public AudioClip sound04;
     public bool HideSEflag = false;  //隠れる音
 
+    public AudioClip sound05;
+    public bool GateSEflag = false;  //ドアを開ける音
+
     public AudioClip sound1;
     AudioSource audioSource;
 
@@ -61,6 +64,13 @@ public class Sound : MonoBehaviour
             
             audioSE.PlayOneShot(sound04);
             HideSEflag = false;
+        }
+
+        if (GateSEflag == true)
+        {
+
+            audioSE.PlayOneShot(sound05);
+            GateSEflag = false;
         }
 
         //mouse左が押された
