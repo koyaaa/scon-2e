@@ -1896,6 +1896,7 @@ MonoBehaviour:
   keyflg: 0
   uzuflg: 0
   uzumetor: 0
+  hypnflg2: 0
 --- !u!114 &392650036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2190,6 +2191,7 @@ GameObject:
   - component: {fileID: 395442468}
   - component: {fileID: 395442469}
   - component: {fileID: 395442466}
+  - component: {fileID: 395442470}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2298,6 +2300,7 @@ MonoBehaviour:
   hide: 0
   hide2: 0
   angleSpeed: 4
+  Chest: {fileID: 0}
 --- !u!54 &395442467
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2340,7 +2343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSearch: {fileID: 1631036807}
   hypn: {fileID: 1725761424}
-  enemy_parent: {fileID: 1631036798}
   ray_distance: 10
   stop_time: 1.55
   blueColor: {r: 0, g: 0.07410216, b: 1, a: 0}
@@ -2348,6 +2350,21 @@ MonoBehaviour:
   hypn_animation: 0
   soundObj: {fileID: 879146028}
   soundManager: {fileID: 879146029}
+  chesthypn: 0
+--- !u!114 &395442470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395442461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb800e62beb9234a995205fc7ed7327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleObject: {fileID: 533288879860337792, guid: df007a4ecc3ad6d498c96a40617663a7,
+    type: 3}
 --- !u!1001 &431231035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3042,7 +3059,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605578050}
-  m_LocalRotation: {x: 0.25072804, y: -0.000000020901975, z: 0.0000000054136358, w: 0.9680576}
+  m_LocalRotation: {x: 0.25072807, y: 0.000000014724366, z: -0.0000000038136285, w: 0.9680576}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3740,6 +3757,7 @@ MonoBehaviour:
   keyflg: 0
   uzuflg: 0
   uzumetor: 0
+  hypnflg2: 0
 --- !u!114 &706540317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4350,7 +4368,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800160388}
-  m_LocalRotation: {x: 0.21539795, y: 0.000000032537866, z: -0.0000000071770616, w: 0.9765264}
+  m_LocalRotation: {x: 0.21539795, y: -0.0000000069443504, z: 0.0000000015317544,
+    w: 0.9765264}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7061,6 +7080,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stp: 4
+  Open: 0
+  goalai: {fileID: 0}
+  ViewTime: 2
 --- !u!1 &1329932332
 GameObject:
   m_ObjectHideFlags: 0
@@ -7116,6 +7138,7 @@ MonoBehaviour:
   keyflg: 0
   uzuflg: 0
   uzumetor: 0
+  hypnflg2: 0
 --- !u!114 &1329932335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8213,6 +8236,7 @@ MonoBehaviour:
   keyflg: 0
   uzuflg: 0
   uzumetor: 0
+  hypnflg2: 0
 --- !u!114 &1598156926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8421,6 +8445,7 @@ MonoBehaviour:
   keyflg: 0
   uzuflg: 0
   uzumetor: 0
+  hypnflg2: 0
 --- !u!114 &1610063767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8954,6 +8979,7 @@ MonoBehaviour:
   keyflg: 0
   uzuflg: 0
   uzumetor: 0
+  hypnflg2: 0
 --- !u!1001 &1643726198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10228,7 +10254,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899662198}
-  m_LocalRotation: {x: 0.2330781, y: 0.000000011468242, z: -0.000000002748701, w: 0.972458}
+  m_LocalRotation: {x: 0.2330781, y: -0.000000008017539, z: 0.0000000019216384, w: 0.972458}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
