@@ -7,9 +7,13 @@ public class GameOver : MonoBehaviour
     public OnSearchView onSearch;   //OnSearchViewスクリプトを使用する
     public float ray_distance = 0.5f;
 
+    private float step_time;    // 経過時間カウント用
+
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        step_time = 0.0f;       // 経過時間初期化
     }
 
     void Update()
@@ -28,7 +32,15 @@ public class GameOver : MonoBehaviour
                 //ヒットしたものがプレイヤー
                 if (hit.collider.tag == "Player")
                 {
-                    gameManager.GameOver();
+                    // 経過時間をカウント
+                    step_time += Time.deltaTime;
+
+                    // 1秒後に画面遷移（sceneへ移動）
+                    if (step_time >= 0.3f)
+                    {
+                        gameManager.GameOver();
+                    }
+
                 }
             }
             Debug.DrawRay(ray.origin, ray.direction * ray_distance, Color.red, 5);
