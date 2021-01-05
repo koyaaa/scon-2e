@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (5)
+      value: Cop (4)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -518,7 +518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52147821}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 62.52, y: 1.1337888, z: 9.04}
+  m_LocalPosition: {x: 62.52, y: 1.1337888, z: 11.5}
   m_LocalScale: {x: 1.1, y: 1, z: 1}
   m_Children:
   - {fileID: 1864637572}
@@ -743,6 +743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest_A (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1974445982257538455, guid: 1f2e97d08e0c09642ab34f195640d5f4,
+        type: 3}
+      propertyPath: Hidecamera
+      value: 
+      objectReference: {fileID: 1569444784}
     - target: {fileID: 1979007669148959680, guid: 1f2e97d08e0c09642ab34f195640d5f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1931,7 +1936,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (9)
+      value: Cop (8)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -2608,7 +2613,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (13)
+      value: Cop (12)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -5411,7 +5416,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (6)
+      value: Cop (5)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -8614,7 +8619,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (8)
+      value: Cop (7)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -9579,7 +9584,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (12)
+      value: Cop (11)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -10088,7 +10093,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (1)
+      value: Cop
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -10431,7 +10436,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (3)
+      value: Cop (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -11005,7 +11010,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (7)
+      value: Cop (6)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -11702,7 +11707,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (2)
+      value: Cop (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -12030,7 +12035,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (4)
+      value: Cop (3)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -14314,7 +14319,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (11)
+      value: Cop (10)
       objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
@@ -14877,7 +14882,7 @@ PrefabInstance:
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_Name
-      value: Cop (10)
+      value: Cop (9)
       objectReference: {fileID: 0}
     - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
