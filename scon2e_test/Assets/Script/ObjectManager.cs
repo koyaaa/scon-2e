@@ -115,6 +115,36 @@ public class ObjectManager : MonoBehaviour
                     d2 = refObj.GetComponent<OnSearchView>();
                     d2.HideSearch = true;
                     break;
+                case 9:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Cop (8)");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 10:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Cop (9)");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 11:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Cop (10)");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 12:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Cop (11)");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
+                case 13:
+                    //GameObject refObj;
+                    refObj = GameObject.Find("Cop (12)");
+                    d2 = refObj.GetComponent<OnSearchView>();
+                    d2.HideSearch = true;
+                    break;
             }
         }
     }
