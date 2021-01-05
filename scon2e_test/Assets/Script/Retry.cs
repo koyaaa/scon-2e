@@ -13,7 +13,7 @@ public class Retry : MonoBehaviour
         }
         else if (count == 2)
         {
-            SceneManager.LoadScene("Stage2");
+            SceneManager.LoadScene("Stage(2)");
         }
         else if (count == 3)
         {

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         {
             GC = 1;
         }
-        else if (SceneManager.GetActiveScene().name == "Stage2") 
+        else if (SceneManager.GetActiveScene().name == "Stage(2)") 
         {
             GC = 2;
         }
