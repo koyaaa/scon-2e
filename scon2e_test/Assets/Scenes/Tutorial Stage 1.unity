@@ -1019,7 +1019,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 738459788, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.50039226
+      value: -0.510398
       objectReference: {fileID: 0}
     - target: {fileID: 738459788, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1027,7 +1027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738459788, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.641174
+      value: 16.898832
       objectReference: {fileID: 0}
     - target: {fileID: 738459789, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_Follow
@@ -1457,8 +1457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb800e62beb9234a995205fc7ed7327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleObject: {fileID: 0}
-  onSearch: {fileID: 0}
 --- !u!1001 &124255610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3085,12 +3083,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 917749374}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &329751602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
-    type: 3}
-  m_PrefabInstance: {fileID: 244328797}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &329751613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
@@ -4212,7 +4204,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.8, y: 1, z: 1.82}
+  m_Size: {x: 3.8, y: 2.41, z: 1.82}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &601377769
 MonoBehaviour:
@@ -7521,6 +7513,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81af12a6e61e36a41ab711c1a28766ef, type: 3}
+--- !u!1 &986822525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
+    type: 3}
+  m_PrefabInstance: {fileID: 1450599457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &992264444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4753713205229766, guid: 17c7e6b693184f14cb53671468e7d7e5,
@@ -8344,6 +8342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999545922183188508, guid: af031e47485f7a64596e57c331ef54a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4945181935591229720, guid: af031e47485f7a64596e57c331ef54a7,
         type: 3}
@@ -11005,6 +11008,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cop (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6309681733104343421, guid: 95595da2e78d51f41a93708011413d69,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy_Key
+      objectReference: {fileID: 0}
     - target: {fileID: 6318381539184432361, guid: 95595da2e78d51f41a93708011413d69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13643,7 +13651,7 @@ PrefabInstance:
     - target: {fileID: 8902764181259969881, guid: b655468fbb7d9134c91be42e4a9ee4d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.04
+      value: 46.5
       objectReference: {fileID: 0}
     - target: {fileID: 8902764181259969881, guid: b655468fbb7d9134c91be42e4a9ee4d7,
         type: 3}
@@ -13653,7 +13661,7 @@ PrefabInstance:
     - target: {fileID: 8902764181259969881, guid: b655468fbb7d9134c91be42e4a9ee4d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.11
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 8902764181259969881, guid: b655468fbb7d9134c91be42e4a9ee4d7,
         type: 3}
@@ -14950,7 +14958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132d0004b2f9b7a4aa906a5dc16d120a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeyCop: {fileID: 329751602}
+  KeyCop: {fileID: 986822525}
   onSearch: {fileID: 0}
   LockEnter: 0
 --- !u!65 &2034179697
@@ -14964,7 +14972,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18, y: 4.23, z: 4.01}
+  m_Size: {x: 3.03, y: 4.23, z: 4.01}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2034179698
 Transform:
