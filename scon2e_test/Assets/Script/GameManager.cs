@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
         {
             GC = 1;
         }
-        else if (SceneManager.GetActiveScene().name == "Stage(2)") 
+        else if (SceneManager.GetActiveScene().name == "Tutorial Stage 1") 
         {
             GC = 2;
         }
-        else if (SceneManager.GetActiveScene().name == "Stage3")
+        else if (SceneManager.GetActiveScene().name == "Stage(2)")
         {
             GC = 3;
         }
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
             }
             SceneManager.LoadScene("GameClear");
         }
-        else if (SceneManager.GetActiveScene().name == "Stage2")
+        else if (SceneManager.GetActiveScene().name == "Tutorial Stage 1")
         {
             if (CC >= 1)
             {
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             }
             SceneManager.LoadScene("GameClear2");
         }
-        else if (SceneManager.GetActiveScene().name == "Stage3")
+        else if (SceneManager.GetActiveScene().name == "Stage(2)")
         {
             if (CC >= 2)
             {
