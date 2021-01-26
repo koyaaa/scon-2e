@@ -13,11 +13,11 @@ public class Retry : MonoBehaviour
         }
         else if (count == 2)
         {
-            SceneManager.LoadScene("Stage(2)");
+            SceneManager.LoadScene("Tutorial Stage 1");
         }
         else if (count == 3)
         {
-            SceneManager.LoadScene("Stage3");
+            SceneManager.LoadScene("Stage(2)");
         }
     }
 }

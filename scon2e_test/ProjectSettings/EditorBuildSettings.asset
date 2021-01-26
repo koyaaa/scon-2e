@@ -22,11 +22,29 @@ EditorBuildSettings:
     guid: 471d45882862d5948a0a1108a3a25d5c
   - enabled: 1
     path: Assets/Scenes/GameClear2.unity
-    guid: 8acbb9627a1dda04c836313de93098f9
+    guid: 1fb7243b46f1ae746a220bc9a9139852
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GameClear3.unity
-    guid: 7140c49b6bcded94aa7414bd2d291b7f
+    guid: 94b0473f503a0bf4880dc1efd86e7919
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Stage 1.unity
+    guid: 0cc712c231cd0e945906094f9515d681
   - enabled: 1
     path: Assets/Scenes/Stage3.unity
     guid: bc38a496e25d40a45934381d2dc1b6cc
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Stage.unity
+    guid: 5e9a8e886f5d1ed4c91f0affc4cee93a
+  - enabled: 1
+    path: Assets/Scenes/StageSelect.unity
+    guid: bb7d86e6225779346a257cacefa68157
+  - enabled: 1
+    path: Assets/Scenes/Stage(2).unity
+    guid: 9e0ab48d23da1294a9d6a672c3c8af69
   m_configObjects: {}

@@ -2120,8 +2120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb800e62beb9234a995205fc7ed7327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleObject: {fileID: 533288879860337792, guid: df007a4ecc3ad6d498c96a40617663a7,
-    type: 3}
 --- !u!1 &130035431
 GameObject:
   m_ObjectHideFlags: 0
@@ -14491,6 +14489,9 @@ MonoBehaviour:
   Open: 0
   goalai: {fileID: 0}
   ViewTime: 5
+  soundEnter: 1
+  soundObj: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!1 &981768254
 GameObject:
   m_ObjectHideFlags: 0
@@ -29710,11 +29711,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4140529003804399253, guid: e438a57b650de0440aa3d93e9cbfda19,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 937c2b34280a2e645a0ace3004d02918, type: 3}
     - target: {fileID: 4140529003804399254, guid: e438a57b650de0440aa3d93e9cbfda19,
         type: 3}
       propertyPath: m_Name
       value: Soundmanager
       objectReference: {fileID: 0}
+    - target: {fileID: 4140529003804399255, guid: e438a57b650de0440aa3d93e9cbfda19,
+        type: 3}
+      propertyPath: sound05
+      value: 
+      objectReference: {fileID: 8300000, guid: ba2a1b44162e34642bcb3587017a887d, type: 3}
+    - target: {fileID: 4140529003804399255, guid: e438a57b650de0440aa3d93e9cbfda19,
+        type: 3}
+      propertyPath: sound04
+      value: 
+      objectReference: {fileID: 8300000, guid: 0358a5f30c34d5b4c9b395f3d26d3a6e, type: 3}
+    - target: {fileID: 4140529003804399255, guid: e438a57b650de0440aa3d93e9cbfda19,
+        type: 3}
+      propertyPath: sound03
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ca1b2ef60e63104c90935e4899411c5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e438a57b650de0440aa3d93e9cbfda19, type: 3}
 --- !u!1 &2034179695

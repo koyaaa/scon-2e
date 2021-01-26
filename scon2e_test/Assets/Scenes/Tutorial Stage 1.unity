@@ -1019,7 +1019,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 738459788, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.510398
+      value: -0.51039225
       objectReference: {fileID: 0}
     - target: {fileID: 738459788, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1027,7 +1027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738459788, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.898832
+      value: -34.251175
       objectReference: {fileID: 0}
     - target: {fileID: 738459789, guid: da63bcb57fff121489cca8e25c3bbfe0, type: 3}
       propertyPath: m_Follow
@@ -1457,6 +1457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb800e62beb9234a995205fc7ed7327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleObject: {fileID: 0}
 --- !u!1001 &124255610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1786,7 +1787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1233630853806618, guid: 7cce1641f65556d44953cedc54d47149, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4242135893196936, guid: 7cce1641f65556d44953cedc54d47149, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9072,6 +9073,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OperationUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7240479427597020474, guid: e661fc4bd341c8347bbd9fa0c569a3df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7240479427597020478, guid: e661fc4bd341c8347bbd9fa0c569a3df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13651,7 +13657,7 @@ PrefabInstance:
     - target: {fileID: 8902764181259969881, guid: b655468fbb7d9134c91be42e4a9ee4d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.5
+      value: -4.65
       objectReference: {fileID: 0}
     - target: {fileID: 8902764181259969881, guid: b655468fbb7d9134c91be42e4a9ee4d7,
         type: 3}

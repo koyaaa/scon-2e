@@ -523,7 +523,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage2
+          m_StringArgument: Tutorial Stage 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1398637306
@@ -652,7 +652,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage3
+          m_StringArgument: Stage(2)
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1399038156
@@ -1011,7 +1011,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ProtoStage
+          m_StringArgument: Tutorial Stage
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1801634166
